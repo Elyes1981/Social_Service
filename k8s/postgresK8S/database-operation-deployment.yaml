@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: database-operation
+  name: database-operation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database-operation
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: database-operation
+    spec:
+      containers:
+      - image: postgres
+        name: postgres
+        resources: {}
+        ports:
+          - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: database-operation-secret
+                key: database-user
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: database-operation-secret
+                key: database-user
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: database-operation-secret
+                key: database-name
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgredb
+
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: database-operation-pv-claim
+status: {}
