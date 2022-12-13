@@ -1,10 +1,7 @@
 #!/bin/bash
 
 #set -x
-kubectl create serviceaccount api-service-account
-kubectl apply  -f ../rbac-cluster-role.yaml
-kubectl create clusterrolebinding service-pod-reader-default --clusterrole=microservices-kubernetes-namespace-reader --serviceaccount=default:api-service-account
-kubectl apply -f ../k8s/redis/redis-configmap.yml
+kubectl apply -f ../k8s/redis/redis-configmap.yaml
 kubectl apply -f ../k8s/redis/redis-secret.yml
 
 kubectl apply -f ../k8s/customer/customer-configmap.yml
@@ -33,5 +30,5 @@ kubectl apply -f ../k8s/view/view-deployment.yml
 kubectl apply -f ../k8s/view/view-service.yml
 
 kubectl apply -f ../k8s/gateway/gateway-configmap.yml
-kubectl apply -f ../k8s/gateway/gateway-deployment.yml
-kubectl apply -f ../k8s/gateway/gateway-service.yml
+kubectl apply -f ../k8s/gateway/gateway-deployment.yaml
+kubectl apply -f ../k8s/gateway/gateway-service.yaml

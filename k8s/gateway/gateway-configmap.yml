@@ -4,7 +4,7 @@ metadata:
   name: gateway
 data:
   server.port: "9090"
-  server.servlet.contextPath: "/"
+  server.servlet.contextPath: "/gateway"
   spring.cloud.kubernetes.discovery.all-namespaces: "true"
   management.endpoints.web.exposure.include: "health,info,metrics,prometheus"
   management.metrics.enable.all: "true"
