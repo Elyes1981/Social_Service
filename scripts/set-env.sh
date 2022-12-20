@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #set -x
-kubectl apply -f ../k8s/redis/redis-configmap.yaml
-kubectl apply -f ../k8s/redis/redis-secret.yml
+kubectl apply -f ../k8s/redis/redis-deployment.yaml
+kubectl apply -f ../k8s/redis/redis-service.yml
 
 kubectl apply -f ../k8s/customer/customer-configmap.yml
 kubectl apply -f ../k8s/customer/customer-secret.yml

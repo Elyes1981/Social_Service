@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: operation
-          image: operation-microservice
-          imagePullPolicy: Never
+          image: firas1234/operation-mk:1.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

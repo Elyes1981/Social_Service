@@ -18,9 +18,9 @@ spec:
         app: gateway
     spec:
       containers:
-      - image: gateway-microservice
+      - image: firas1234/gateway:1.0
         name: gateway-microservice
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         env:
           - name: SPRING_PROFILES_INCLUDE
             value: "kubernetes"

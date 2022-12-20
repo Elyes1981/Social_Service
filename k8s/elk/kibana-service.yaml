@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana-service
+spec:
+  type: ClusterIP
+  selector:
+    deployment: kibana
+  ports:
+    -
+      name: http
+      protocol: TCP
+      port: 5601

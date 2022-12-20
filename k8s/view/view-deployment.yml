@@ -17,7 +17,7 @@ spec:
       containers:
         - name: view
           image: view-microservice
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

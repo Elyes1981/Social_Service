@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: customer
-          image: customer-microservice
-          imagePullPolicy: Never
+          image: firas1234/customer-mk:1.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:

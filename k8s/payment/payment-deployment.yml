@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: payment
-          image: payment-microservice
-          imagePullPolicy: Never
+          image: firas1234/payment-mk:1.1
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
