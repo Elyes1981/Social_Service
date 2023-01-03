@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: operation
-          image: operation-microservice
-          imagePullPolicy: Never
+          image: firas1234/operation-mk:1.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
@@ -40,22 +40,6 @@ spec:
             limits:
               cpu: "1.0"
               memory: 800Mi
-          readinessProbe:
-            httpGet:
-              port: 8080
-              path: /actuator/health
-            initialDelaySeconds: 60
-            timeoutSeconds: 2
-            periodSeconds: 20
-            failureThreshold: 5
-          livenessProbe:
-            httpGet:
-              port: 8080
-              path: /actuator/info
-            initialDelaySeconds: 60
-            timeoutSeconds: 2
-            periodSeconds: 20
-            failureThreshold: 5
           volumeMounts:
             - name: operation-volume
               mountPath: /etc/secretspot
