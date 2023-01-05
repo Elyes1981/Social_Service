@@ -1,0 +1,632 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<!DOCTYPE html>
+<!--html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up Form by Colorlib</title>
+
+
+</head>
+<body>
+
+<div margin-top="2px">
+
+  <div >
+
+    <form #myForm="ngForm" [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+    <!-- Sing in  Form -->
+    <!--section class="sign-in">
+
+      <div class="container mt-4">
+        <div class="signin-content">
+          <div class="signin-image">
+             <span style="text-align:center;background-color: hsla(0, 100%, 50%, 0.1);margin-top:0px;height:54px">
+              <h2   style="text-align:center"class="form-title">Sign up</h2>
+            </span>
+
+
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-form">
+                <mat-label>{{ "lastName" | translate }}</mat-label>
+                <input matInput formControlName="lastName" minlength="2" />
+                <mat-error>{{'lastName must be more than 2 characters'|translate}} </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-form">
+                <mat-label>{{ "emailAdress" | translate }}</mat-label>
+                <input matInput  type="email"  formControlName="emailAdress" required  />
+                <mat-error>{{'emailAdress est obligatoire'|translate}} </mat-error>
+              </mat-form-field>
+            </div>
+
+
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-form">
+                <mat-label>{{ "residenceNumberOfrooms" | translate }}</mat-label>
+                <input matInput  type="number"  formControlName="residenceNumberOfrooms" min="1" max="10" />
+                <mat-error>{{'residenceNumberOfrooms est obligatoire'|translate}} </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-form">
+                <mat-label>{{ "metrage" | translate }}</mat-label>
+                <input matInput  type="number"  formControlName="metrage" />
+                <mat-error>{{'metrage est obligatoire'|translate}} </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-form">
+                <mat-label>{{ "home_Adress" | translate }}</mat-label>
+                <textarea matInput type="text" formControlName="home_Adress" minlength="6" ></textarea>
+                <mat-error>{{'Home Adress must be more than 6 characters'|translate}} </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field appearance="outline" class="example-form">
+                <mat-label>{{ "numberOfPersonInRes" | translate }}</mat-label>
+                <input matInput  type="number"  formControlName="numberOfPersonInRes" />
+                <mat-error>{{'numberOfPersonInRes est obligatoire'|translate}} </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="map-frame">
+              <div id="map"></div>
+            </div>
+          </div>
+
+          <div class="signin-form">
+
+
+
+              <div class="form-group">
+                <mat-form-field appearance="outline" class="example-form">
+                  <mat-label>{{ "username" | translate }}</mat-label>
+                  <input matInput formControlName="username" minlength="2" />
+                  <mat-error>{{'username must be more than 2 characters'|translate}} </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field appearance="outline" class="example-form">
+                  <mat-label>{{ "Firstname" | translate }}</mat-label>
+                  <input matInput formControlName="firstName" minlength="2" />
+                  <mat-error>{{'Firstname must be more than 2 characters'|translate}} </mat-error>
+                </mat-form-field>
+              </div>
+
+
+
+
+              <div class="form-group">
+                <mat-form-field appearance="outline" class="example-form">
+                  <mat-label>{{ "password" | translate }}</mat-label>
+                  <input matInput  type="password"  formControlName="password" class="input--style-2"   required minlength="6"  [(ngModel)]="form.password" />
+                  <mat-error>{{'password est obligatoire'|translate}} </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ "Birth Date" | translate }}</mat-label>
+                  <input formControlName="birthDate"  [max]='maxDate' matInput [matDatepicker]="picker" required>
+                  <mat-error>{{ "This field is mandatory" | translate }}</mat-error>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'gender' | translate }}</mat-label>
+                  <mat-select  name="gender" formControlName="gender" >
+
+
+          <span *ngIf="lang=='en-US'">
+            <mat-option *ngFor="let gender of genders"  [value]="gender">{{gender.label}}</mat-option>
+          </span>
+                    <span *ngIf="lang=='fr-FR'">
+            <mat-option *ngFor="let gender of genders"  [value]="gender">{{ gender.label_fr }}</mat-option>
+          </span>
+                    <span *ngIf="lang=='ar-AR'">
+            <mat-option *ngFor="let gender of genders"  [value]="gender">{{ gender.label_ar }}</mat-option>
+          </span>
+
+                  </mat-select>
+                  <mat-error> {{'This field is mandatory'| translate  }}</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'Status' | translate }}</mat-label>
+                <mat-select  name="status" formControlName="status" >
+
+          <span *ngIf="lang=='en-US'">
+            <mat-option *ngFor="let status of statuss"  [value]="status">{{status.label}}</mat-option>
+          </span>
+                  <span *ngIf="lang=='fr-FR'">
+            <mat-option *ngFor="let status of statuss"  [value]="status">{{ status.label_fr }}</mat-option>
+          </span>
+                  <span *ngIf="lang=='ar-AR'">
+            <mat-option *ngFor="let status of statuss"  [value]="status">{{ status.label_ar}}</mat-option>
+          </span>
+
+                </mat-select>
+                <mat-error> {{'This field is mandatory'| translate  }}</mat-error>
+              </mat-form-field>
+          </div>
+              <div class="form-group">
+
+                <label>{{ "phone" | translate }}</label>
+
+                <ng-container *ngIf="countries">
+                  <select (change)="resetPhoneNumber($event)"    [(ngModel)]="selectedCountry" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let country of countries"  [ngValue]="country.code">{{country.name}}</option>
+                  </select>
+                </ng-container>
+                <input type="text" (input)="formatPhoneNumber($event)" formControlName="phone" required>
+
+
+              </div>
+              <div class="form-group">
+                <mat-form-field appearance="outline" class="example-form">
+                  <mat-label>{{ "cooptedById" | translate }}</mat-label>
+                  <input matInput  type="number"  formControlName="cooptedById" class="input--style-2"    />
+                  <mat-error>{{'cooptedById est obligatoire'|translate}} </mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <mat-radio-group formControlName="paymentMean" color="primary" class="center">
+                <i class="fa-solid fa-wallet"></i>
+
+                <mat-label id="example-radio-group-label">{{ 'Choose Your Payement Mean' | translate }}</mat-label>
+
+                <br/>
+                <mat-radio-button  aria-labelledby="example-radio-group-label"
+                                   class="example-radio-group"  value="Visa" id="visa" >&nbsp;<img src="../../assets/visa_curved.jpg" width="40" >&nbsp;</mat-radio-button>
+                &nbsp;
+                <mat-radio-button  aria-labelledby="example-radio-group-label"
+                                   class="example-radio-group" value="Master Card" >&nbsp;<img src="../../assets/mastercard.png" width="40" >&nbsp;</mat-radio-button>
+                &nbsp;
+                <mat-radio-button  aria-labelledby="example-radio-group-label"
+                                   class="example-radio-group" value="American Express" >&nbsp;<img src="../../assets/american_express_curved.png" width="40" >&nbsp;</mat-radio-button>
+
+
+              </mat-radio-group>
+
+              <div class="form-group row">
+                <div class="col">
+                  <button class="btn btn--radius btn--green " type="submit">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Sign Up
+                  </button>
+                </div>
+                <div class="col">
+                  <button class="btn btn--radius btn--gray" type="reset" >
+                    <span class="glyphicon glyphicon-ok-circle"></span> Cancel
+                  </button>
+                </div>
+              </div>
+            <div class="alert alert-success" *ngIf="submitted && !isSignUpFailed">
+              success
+            </div>
+
+              <div class="alert alert-warning" *ngIf="submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+              </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+    </form>
+  </div></div></body>
+</html-->
+
+<div class="container">
+  <div class="background"></div>
+  <div class="container">
+   
+    <div class="row register-panel">
+      <div class="col-md-10 col-md-offset-1">
+       
+       
+         
+        <div class="card">
+          <div class="card-header">
+            <h4>Register</h4>
+           
+         </div>
+         
+                
+               
+               
+                <form #myForm="ngForm" [formGroup]="customerForm"   (ngSubmit)="onSubmit()">     
+                <mat-stepper  linear>
+            
+               
+                  
+                <mat-step label="Personal Info"   >
+                
+                 
+                  
+                 
+          <mat-grid-list cols="2" rowHeight="350px">
+            <mat-grid-tile>
+              <div class="controles-container">
+                
+            <br>
+                  <mat-form-field appearance="outline" >
+                    <mat-label>{{ "username" | translate }}</mat-label>
+                    <input matInput formControlName="username" minlength="2" />
+                    <mat-error>{{'username must be more than 2 characters'|translate}} </mat-error>
+                  </mat-form-field>
+                
+                
+                <mat-form-field appearance="outline" >
+                  <mat-label>{{ "firstName" | translate }}</mat-label>
+                  <input type="text"  matInput formControlName="firstName" minlength="2" id="firstName" required  name="firstName">
+                  
+                  <mat-error>{{'First Name must be more than 2 characters'|translate}} .</mat-error>    
+                </mat-form-field> 
+                
+          
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "lastName" | translate }}</mat-label>
+            <input  matInput formControlName="lastName" id="lastName" minlength="2" required  name="lastName">
+            <mat-error>{{'Last Name must be more than 2 characters'|translate}} .</mat-error> 
+          </mat-form-field> 
+          
+          
+          <div class="md-form" style="width:300px ;">
+     
+            <input type="file" (change)="onUploadFiles($event)" name="files" required formControlName="photo" 
+                class="form-control" />
+              
+       
+    </div>
+  
+            
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+          <mat-label>{{ "Birth Date" | translate }}</mat-label>
+          <input formControlName="birthDate"  [max]='maxDate' matInput [matDatepicker]="picker" required>
+          <mat-error>{{ "This field is mandatory" | translate }}</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+    </div>
+   
+    
+         
+            
+         
+          
+          
+                
+    
+              </div></mat-grid-tile>
+          
+      <mat-grid-tile>
+        
+        <div class="controles-container">
+          <div class="form-group"  >
+            
+            <label>{{ "Phone Number" | translate }}</label>
+        <br>
+        
+          <ng-container *ngIf="countries" >
+          
+            <select (change)="resetPhoneNumber($event)" class="form-control"    [(ngModel)]="selectedCountry" [ngModelOptions]="{standalone: true}"  style="width:80px; height: 33px;">
+              <option *ngFor="let country of countries"  [ngValue]="country.code">{{country.name}}</option>
+            </select>
+          
+           </ng-container>
+          <input type="text" class="form-control" (input)="formatPhoneNumber($event)" formControlName="phone" style="width: 300px; height: 30px;" required>
+       
+   
+        </div>
+          
+       
+          
+        
+           <mat-form-field appearance="outline">
+            <mat-label>{{ 'Status' | translate }}</mat-label>
+            <mat-select  name="status" formControlName="status" >
+      
+              <span *ngIf="lang=='en-US'">
+                <mat-option *ngFor="let status of statuss"  [value]="status">{{status.label}}</mat-option>
+              </span>
+              <span *ngIf="lang=='fr-FR'">
+                <mat-option *ngFor="let status of statuss"  [value]="status">{{ status.label_fr }}</mat-option>
+              </span>
+              <span *ngIf="lang=='ar-AR'">
+                <mat-option *ngFor="let status of statuss"  [value]="status">{{ status.label_ar}}</mat-option>
+              </span>
+              
+            </mat-select>
+            <mat-error> {{'This field is mandatory'| translate  }}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'gender' | translate }}</mat-label>
+            <mat-select  name="gender" formControlName="gender" >
+            
+      
+              <span *ngIf="lang=='en-US'">
+                <mat-option *ngFor="let gender of genders"  [value]="gender">{{gender.label}}</mat-option>
+              </span>
+              <span *ngIf="lang=='fr-FR'">
+                <mat-option *ngFor="let gender of genders"  [value]="gender">{{ gender.label_fr }}</mat-option>
+              </span>
+              <span *ngIf="lang=='ar-AR'">
+                <mat-option *ngFor="let gender of genders"  [value]="gender">{{ gender.label_ar }}</mat-option>
+              </span>
+             
+            </mat-select>
+            <mat-error> {{'This field is mandatory'| translate  }}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Coopted By' | translate }}</mat-label>
+            <mat-select  name="cooptedByType" formControlName="cooptedByType" >
+      
+            
+                   
+                    <span *ngIf="lang=='en-US'">
+                    <mat-option  *ngFor="let cooptedByType of cooptedByTypes" [value]="cooptedByType" (click)="openConfirmDialog()" >
+                        <button mat-raised-button color="primary">{{cooptedByType.label}}</button>
+                    </mat-option></span>
+                    <span *ngIf="lang=='fr-FR'">
+                      <mat-option *ngFor="let cooptedByType of cooptedByTypes" [value]="cooptedByType" (click)="openConfirmDialog()" >
+                          <button mat-raised-button color="primary">{{cooptedByType.label_fr}}</button>
+                      </mat-option></span>
+                      <span *ngIf="lang=='ar-AR'">
+                        <mat-option  *ngFor="let cooptedByType of cooptedByTypes" [value]="cooptedByType" (click)="openConfirmDialog()" >
+                            <button mat-raised-button color="primary">{{cooptedByType.label_ar}}</button>
+                        </mat-option></span>
+                        
+                   
+            </mat-select>
+            <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+          </mat-form-field>
+          
+          
+         
+        </div></mat-grid-tile></mat-grid-list>
+      
+          <div [align]="'end'">
+            <button mat-button matStepperNext type="button">{{ "Next" | translate }}</button>
+          </div>
+       
+                
+        </mat-step>
+      
+        <mat-step label="Adress Info" >
+          
+          <mat-form-field appearance="outline">
+            <mat-label>{{ "emailAdress" | translate }}</mat-label>
+            <input type="email" matInput formControlName="emailAdress" id="emailAdress" required email="true"   name="emailAdress">
+            <mat-error>Invalid email address.</mat-error>
+          </mat-form-field>
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ "State" | translate }}</mat-label>
+               <mat-select  name="gouv"   formControlName="gouvernerat" >
+                <span *ngIf="lang=='en-US'">
+                <mat-option *ngFor="let gouv of gouvs"  (click)="selectGouvernorat(gouv)"  [value]="gouv">{{gouv.name}}
+                  
+                </mat-option>
+                </span>
+                <span *ngIf="lang=='fr-FR'">
+                  <mat-option *ngFor="let gouv of gouvs"  (click)="selectGouvernorat(gouv)"  [value]="gouv">{{gouv.name}}
+                    
+                  </mat-option>
+                  </span>
+                  <span *ngIf="lang=='ar-AR'">
+                    <mat-option *ngFor="let gouv of gouvs"  (click)="selectGouvernorat(gouv)"  [value]="gouv">{{gouv.name_ar}}
+                      
+                    </mat-option>
+                    </span>
+              </mat-select>
+              <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+              </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "City" | translate }}</mat-label>
+                 <mat-select  name="delegation"  formControlName="delegation">
+                  <span *ngIf="lang=='en-US'">
+                  <mat-option  *ngFor="let delegation of gouvSelect.delegations "  [value]="delegation">
+                    {{delegation.name}}
+                  </mat-option>
+                  </span>
+                  <span *ngIf="lang=='fr-FR'">
+                    <mat-option  *ngFor="let delegation of gouvSelect.delegations "  [value]="delegation">
+                      {{delegation.name}}
+                    </mat-option>
+                    </span>
+                    <span *ngIf="lang=='ar-AR'">
+                      <mat-option  *ngFor="let delegation of gouvSelect.delegations "  [value]="delegation">
+                        {{delegation.name_ar}}
+                      </mat-option>
+                      </span>
+                </mat-select>
+                <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+                </mat-form-field>
+              </div>  
+                 
+    <!--div class="md-form"  >
+      <label class="center-block">{{ "Photo" | translate }}:
+          <input type="file" (change)="onUploadFiles($event)" name="files" required
+              class="form-control" />
+      </label>
+    </div-->
+             
+              
+                <mat-form-field appearance="outline" class="example-form">
+                  <mat-label>{{ "home_Adress" | translate }}</mat-label>
+                  <textarea matInput formControlName="home_Adress" minlength="6" ></textarea>
+                  <mat-error>{{'Home Adress must be more than 6 characters'|translate}} </mat-error> 
+                </mat-form-field> 
+                
+               
+           
+              
+               
+                  <div class="map-frame">
+                   <div id="map" ></div>
+                   <br>
+                   <div class="button-row" [align]="'end'" >
+                    <button mat-button matStepperPrevious type="button" >{{ "Back" | translate }}</button>
+                    <button mat-button matStepperNext type="button" >{{ "Next" | translate }}</button>
+                  </div>
+                 </div>
+                
+            
+               
+           
+              </mat-step>
+            
+              <mat-step label="Paiement & Residence" >
+             
+                <mat-grid-list cols="2" rowHeight="350px">
+                  <mat-grid-tile>
+                    <div class="controles-container">
+                
+                <mat-radio-group formControlName="paymentMean" color="primary" class="center">
+                  <i class="fa-solid fa-wallet"></i>
+                  
+                  <mat-label id="example-radio-group-label">{{ 'Choose Your Payement Mean' | translate }}</mat-label>
+                  
+                <br/>
+                <mat-radio-button  aria-labelledby="example-radio-group-label"
+                class="example-radio-group"  value="Visa" id="visa" >&nbsp;<img src="../../assets/visa_curved.jpg" width="40" >&nbsp;</mat-radio-button>
+                &nbsp;
+                <mat-radio-button  aria-labelledby="example-radio-group-label"
+                class="example-radio-group" value="Master Card" >&nbsp;<img src="../../assets/mastercard.png" width="40" >&nbsp;</mat-radio-button>
+                &nbsp;
+                <mat-radio-button  aria-labelledby="example-radio-group-label"
+                class="example-radio-group" value="American Express" >&nbsp;<img src="../../assets/express_curved.png" width="40" >&nbsp;</mat-radio-button>
+               
+                        
+              </mat-radio-group>
+                
+      
+                <mat-form-field appearance="outline" [style.width.%]="80">
+                  <mat-label>{{ "creditCardNumber" | translate }}</mat-label>
+                  <input  matInput formControlName="creditCardNumber" id="creditCardNumber" size="20" value=""  required  name="creditCardNumber" card-number>
+                  <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+                </mat-form-field>
+               
+                 
+               
+            
+                
+    
+                <mat-form-field appearance="outline" [style.width.%]="40" >
+                  <mat-label>{{ "creditCardCVV2" | translate }}</mat-label>
+                  <input  matInput pattern="\d*" maxlength="4" minlength="3" formControlName="creditCardCVV2" id="creditCardCVV2"  required card-cvc name="creditCardCVV2">
+                  <mat-error>{{'Code must be 3 or 4 digits '| translate }}</mat-error>
+                  
+                </mat-form-field>
+                
+         
+                <mat-form-field appearance="outline" [style.width.%]="40">
+                  <mat-label>{{ "Expiration date" | translate }}</mat-label>
+                  <input matInput [matDatepicker]="dp" [min]="minDate" [max]="maxDateExp"  formControlName="creditCardExpireDate">
+                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                  <mat-datepicker #dp
+                                  startView="multi-year"
+                               (yearSelected)="chosenYearHandler($event)"
+                                  (monthSelected)="chosenMonthHandler($event, dp)"
+                                  panelClass="example-month-picker">
+                  </mat-datepicker>
+                  <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+                </mat-form-field>
+                
+                    </div></mat-grid-tile>
+                 
+                      <mat-grid-tile>
+                        <div class="controles-container">
+                          <br><br>
+                          <br><br>
+                          <br><br>
+                          <mat-form-field appearance="outline" [style.width.%]="80" >
+                            <mat-label>{{ 'Residence Type' | translate }}</mat-label>
+                            <mat-select  name="residenceType" formControlName="residenceType" type="number"  >
+                              
+                              <span *ngIf="lang=='en-US'">
+                                <mat-option *ngFor="let residenceType of residencetypes" (click)="selectresidence(residenceType)"  [value]="residenceType"  class="mr-3">{{residenceType.label}}</mat-option>
+                              </span>
+                              <span *ngIf="lang=='fr-FR'">
+                                <mat-option *ngFor="let residenceType of residencetypes"  (click)="selectresidence(residenceType)"  [value]="residenceType"  class="mr-3">{{ residenceType.label_fr }}</mat-option>
+                              </span>
+                              <span *ngIf="lang=='ar-AR'">
+                                <mat-option *ngFor="let residenceType of residencetypes"  (click)="selectresidence(residenceType)"  [value]="residenceType"  class="mr-3">{{ residenceType.label_ar}}</mat-option>
+                              </span>
+                              
+                            </mat-select>
+                            <mat-error> {{'This field is mandatory'| translate  }}</mat-error>
+                          </mat-form-field>
+                
+                 
+                  
+              <br/>
+                <mat-form-field class="example-ripple-form-field" *ngIf="checked" appearance="outline" [style.width.%]="40"  >
+                  <mat-label>{{ "number Of Person" | translate }}</mat-label>
+                  <input matInput [min]="minRoom" [max]="maxRoom"  name="numberOfPersonInRes" formControlName="numberOfPersonInRes"  type="number" >
+                  <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-ripple-form-field" *ngIf="checked"  appearance="outline" [style.width.%]="40">
+                 <mat-label> {{ "Number Of rooms" | translate }}</mat-label>
+                  <input matInput [min]="minRoom" [max]="maxRoom" name="residenceNumberOfrooms" formControlName="residenceNumberOfrooms"  type="number" >  
+                  <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+                </mat-form-field>
+                <mat-form-field  appearance="outline"  *ngIf="checked2" checked="false" [style.width.%]="80" >
+                  <mat-label>{{ "Office Area" | translate }}</mat-label>
+                  <input matInput  name="Office Area"    formControlName="metrage"   id="metrage"  required   >
+                  <span matSuffix>m²</span>
+                  <mat-error>{{'This field is mandatory'| translate }}</mat-error>
+                </mat-form-field>
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="example-form" [style.width.%]="80" >
+                    <mat-label>{{ "password" | translate }}</mat-label>
+                    <input matInput  type="password"  formControlName="password" class="input--style-2"   required minlength="6"  />
+                    <mat-error>{{'This field is mandatory'|translate}} </mat-error>
+                  </mat-form-field>
+                </div>
+                        </div></mat-grid-tile></mat-grid-list>
+                        
+                <div class="button-row" [align]="'end'">
+                  <button mat-button matStepperPrevious type="button">{{ "Back" | translate }}</button>
+                  <button mat-raised-button color="warn" (click)="onClear()">{{ "Clear" | translate }}</button>
+                  
+                  <button mat-raised-button color="primary"   type="submit"  >{{ "Submit" | translate }}</button> 
+                </div>
+                
+              </mat-step>
+                
+            </mat-stepper>
+            <div class="alert alert-warning" *ngIf="f['submitted'] && isSignUpFailed">
+              Signup failed!<br />{{ errorMessage }}
+            </div>
+    </form>
+    
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+              
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   

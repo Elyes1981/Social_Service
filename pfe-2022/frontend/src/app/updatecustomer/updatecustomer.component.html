@@ -1,0 +1,62 @@
+<form [formGroup]="customerForm"  >
+  <mat-card class="example-card">
+    <mat-card-title >Favorite</mat-card-title>
+    <mat-card-subtitle>Your Feedback is so important to help us improve our services</mat-card-subtitle>
+    &nbsp;<img src="../../assets/fav.jpg" width="280"  >&nbsp;
+    <br>
+    
+      
+         
+          <div class="button-row" [align]="'end'">
+            <div class="example-button-row">
+              <span>Favorite</span>
+            <button mat-fab aria-label="Example icon-button with a heart icon" (click)="submit()" type="submit" ><mat-icon>favorite</mat-icon></button>
+            &nbsp; &nbsp; &nbsp;
+            <span>Blacklist</span>
+            <button mat-fab aria-label="Example icon-button with a heart icon" color="primary" (click)="submit1()" type="submit" ><mat-icon>favorite</mat-icon></button>
+          </div> 
+          </div>
+      
+  
+    
+  
+     
+    </mat-card>
+  </form>
+<!--form [formGroup]="customerForm"  >
+    
+       
+
+     
+          
+       
+        
+         
+          <mat-card  width="350px" height="400px">
+
+      <div class="form-group">        
+<mat-form-field appearance="outline" >
+  <mat-label>{{ "firstName" | translate }}</mat-label>
+  <input   matInput formControlName="firstName" minlength="2" [(ngModel)]="customer.firstName" name="firstName"   required  >
+  <mat-error>First Name must be more than 2 characters .</mat-error>            
+</mat-form-field> 
+      </div>
+      
+            <span class="col-xs-4 desc"class="input--style-2">&nbsp;&nbsp;&nbsp; ID</span>
+           <span class="text-right"> {{ customerOrderMou3inaLists[0].mou3ina.id}}</span>
+       <br>
+
+      <button mat-raised-button color="primary" (click)="submit()" type="submit" >Favorite</button>
+      <button mat-raised-button color="primary" (click)="submit1()" type="submit" >Blacklist</button> 
+    
+  
+  
+  
+  
+  </mat-card>
+
+</form-->
+
+
+
+

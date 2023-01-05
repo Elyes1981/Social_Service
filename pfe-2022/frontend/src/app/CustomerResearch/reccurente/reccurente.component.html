@@ -1,0 +1,461 @@
+<hr>
+<mat-panel-title style="text-align:center">
+ <h2   style="text-align:center">{{'Researvation details'|translate}} </h2>
+</mat-panel-title>
+  <div >
+    <div [formGroup]="reservationForm" class="p-5 m-auto" style="background-color: white;">
+      <div class="form-inline mb-2" style=" margin-left: -48px;    margin-top: -48px;">
+        <div class="form-group hidden">
+          <input
+            id="datepicker"
+            name="datepicker"
+            class="form-control"
+            ngbDatepicker
+            outsideDays="hidden"
+            #datepicker="ngbDatepicker"
+            [autoClose]="'outside'"
+            [displayMonths]="2"
+            [dayTemplate]="t"
+            [startDate]="f['startDate'].value!"
+            (dateSelect)="onDateSelection($event)"
+
+            style="border-color: white;">
+          <div class="input-group" >
+            <ng-template #t let-date let-focused="focused">
+            <span
+              class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null"
+            >
+              {{ date['day'] }}
+            </span>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group" style="width:300px;">
+            <input
+              class="form-control"
+              name="dpFromDate"
+              placeholder="yyyy-mm-dd"
+              #dpFromDate
+              [value]="formatter.format(f['startDate'].value)"
+              (input)="setStartDate(dpFromDate.value)"
+            >
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group ml-2">
+          <div class="input-group" style="width:300px;">
+            <input #dpToDate
+                   class="form-control" placeholder="yyyy-mm-dd"
+                   name="dpToDate"
+                   [value]="formatter.format(f['endDate'].value)"
+                   (input)="setEndDate(dpToDate.value)">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-1">
+        <label class="font-weight-bold">{{'Frequency'|translate}}</label>
+      </div>
+
+      <div class="form-group">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            class="custom-control-input" type="radio" id="daily" checked formControlName="frequency"
+            [value]="Frequency.DAILY"/>
+          <label class="custom-control-label form-check-label" for="daily">
+            {{'Daily' | translate }}
+          </label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline" >
+          <input
+            class="custom-control-input"
+            type="radio"
+            id="weekly"
+            formControlName="frequency"
+            [value]="Frequency.WEEKLY"
+          />
+          <label class="custom-control-label form-check-label" for="weekly">
+            {{'Weekly' | translate }}
+          </label>
+        </div>
+
+      </div>
+
+      <button type="submit" (click)="test()" style="float: right;">save</button>
+      <ng-container *ngIf="f.frequency.value === Frequency.WEEKLY" >
+
+        <div formArrayName="onWeekday">
+              <label class="font-weight-bold" style="margin-left: -25px;font-family: sans-serif;">Repeat on :</label>
+           <br>
+          <ul style="height: 20px;    margin-left: 47px;">
+            <label  ngbButtonLabel style="    color: black;border-color:white">
+              <input type="checkbox" name="myCheckbox6" [(ngModel)]="myCheckbox6" formControlName="6" ngbButton style="color: black;text-decoration-color: black;" > {{'Sunday'|translate}}
+              <ng-container *ngIf="myCheckbox6" >
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <ul    style="float: right;">
+
+                  <input checked type="checkbox" name="optionsSunday[0]" value="{{optionsSunday[0]}}" [(ngModel)]="optionsSunday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsSunday[1]" value="{{optionsSunday[1]}}" [(ngModel)]="optionsSunday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsSunday[2]" value="{{optionsSunday[2]}}" [(ngModel)]="optionsSunday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                    {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsSunday[3]"  value="{{optionsSunday[3]}}" [(ngModel)]="optionsSunday[3].value"   [ngModelOptions]="{standalone: true}" >
+                    &nbsp;
+                    {{ 'duration:' | translate }}
+                    &nbsp;
+                </ul>
+              </ng-container>
+            </label>
+
+
+
+          </ul>
+
+      <ul  style="height: 20px;margin-left: 47px;">
+            <label   ngbButtonLabel style="color: black;border-color:white;">
+              <input type="checkbox" name="myCheckbox" [(ngModel)]="myCheckbox" formControlName="0"  style="color: black;text-decoration-color: black;">{{'Monday'|translate}}
+
+              <ng-container *ngIf="myCheckbox"  >
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                <ul    style="float: right;">
+
+                  <input checked type="checkbox" name="optionsMonday[0]" value="{{optionsMonday[0]}}" [(ngModel)]="optionsMonday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsMonday[1]" value="{{optionsMonday[1]}}" [(ngModel)]="optionsMonday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsMonday[2]" value="{{optionsMonday[2]}}" [(ngModel)]="optionsMonday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                  {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsMonday[3]"  value="{{optionsMonday[3]}}" [(ngModel)]="optionsMonday[3].value"   [ngModelOptions]="{standalone: true}" >
+                  &nbsp;
+                  {{ 'duration:' | translate }}
+                  &nbsp;
+                </ul>
+
+              </ng-container>
+            </label>
+          </ul>
+
+
+          <ul style="height: 20px;margin-left: 47px;">
+            <label  ngbButtonLabel style="    color: black;border-color:white;">
+              <input type="checkbox" name="myCheckbox1" [(ngModel)]="myCheckbox1" formControlName="1" ngbButton style="color: black;text-decoration-color: black;">{{'Tuesday'|translate}}
+              <ng-container *ngIf="myCheckbox1" >
+                &nbsp;&nbsp;  &nbsp;&nbsp;
+                <ul    style="float: right;">
+
+                  <input checked type="checkbox" name="optionsTuesday[0]" value="{{optionsTuesday[0]}}" [(ngModel)]="optionsTuesday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsTuesday[1]" value="{{optionsTuesday[1]}}" [(ngModel)]="optionsTuesday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsTuesday[2]" value="{{optionsTuesday[2]}}" [(ngModel)]="optionsTuesday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                  {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsTuesday[3]"  value="{{optionsMonday[3]}}" [(ngModel)]="optionsTuesday[3].value"   [ngModelOptions]="{standalone: true}" >
+                  &nbsp;
+                  {{ 'duration:' | translate }}
+                  &nbsp;
+                </ul>
+
+              </ng-container>
+            </label>
+          </ul>
+          <ul style="height: 20px;margin-left: 47px;">
+            <label  ngbButtonLabel style="color: black;border-color:white;">
+
+              <input type="checkbox" name="myCheckbox2" [(ngModel)]="myCheckbox2"formControlName="2" ngbButton gbButton style="color: black;text-decoration-color: black;">{{'Wednesday'|translate}}
+              <ng-container *ngIf="myCheckbox2" >
+                <ul    style="float: right;">
+
+                  <input checked type="checkbox" name="optionsWednesday[0]" value="{{optionsWednesday[0]}}" [(ngModel)]="optionsWednesday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsWednesday[1]" value="{{optionsWednesday[1]}}" [(ngModel)]="optionsWednesday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsWednesday[2]" value="{{optionsWednesday[2]}}" [(ngModel)]="optionsWednesday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                  {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsWednesday[3]"  value="{{optionsWednesday[3]}}" [(ngModel)]="optionsWednesday[3].value"   [ngModelOptions]="{standalone: true}" >
+                  &nbsp;
+                  {{ 'duration:' | translate }}
+                  &nbsp;
+                </ul>
+
+              </ng-container>
+
+            </label>
+          </ul>
+          <ul style="height: 20px;    margin-left: 47px;">
+            <label  ngbButtonLabel style="color: black;border-color:white">
+              <input type="checkbox" name="myCheckbox3" [(ngModel)]="myCheckbox3" formControlName="3" ngbButton style="color: black;text-decoration-color: black;"> {{'Thursday'|translate}}
+
+              <ng-container *ngIf="myCheckbox3" >
+                &nbsp; &nbsp;
+                <ul    style="float: right;">
+
+                  <input checked type="checkbox" name="optionsThursday[0]" value="{{optionsThursday[0]}}" [(ngModel)]="optionsThursday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsThursday[1]" value="{{optionsThursday[1]}}" [(ngModel)]="optionsThursday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsThursday[2]" value="{{optionsThursday[2]}}" [(ngModel)]="optionsThursday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                  {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsThursday[3]"  value="{{optionsThursday[3]}}" [(ngModel)]="optionsThursday[3].value"   [ngModelOptions]="{standalone: true}" >
+                  &nbsp;
+                  {{ 'duration:' | translate }}
+                  &nbsp;
+                </ul>
+
+              </ng-container>
+            </label>
+          </ul>
+          <ul style="height: 20px;    margin-left: 47px;">
+            <label  ngbButtonLabel style="color: black;border-color:white;">
+              <input type="checkbox"  name="myCheckbox4" [(ngModel)]="myCheckbox4" formControlName="4" ngbButton style="color: black;text-decoration-color: black;"
+              > {{'Friday'|translate}}
+              <ng-container *ngIf="myCheckbox4" >
+                &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;&nbsp;
+                <ul    style="float: right;">
+
+                  <input checked type="checkbox" name="optionsFriday[0]" value="{{optionsFriday[0]}}" [(ngModel)]="optionsFriday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsFriday[1]" value="{{optionsFriday[1]}}" [(ngModel)]="optionsFriday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsFriday[2]" value="{{optionsFriday[2]}}" [(ngModel)]="optionsFriday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                  {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsFriday[3]"  value="{{optionsFriday[3]}}" [(ngModel)]="optionsFriday[3].value"   [ngModelOptions]="{standalone: true}" >
+                  &nbsp;
+                  {{ 'duration:' | translate }}
+                  &nbsp;
+                </ul>
+
+              </ng-container>
+
+            </label>
+          </ul>
+          <ul style="height: 20px;    margin-left: 47px;">
+            <label  ngbButtonLabel style="    color: black;border-color:white">
+              <input type="checkbox" name="myCheckbox5" [(ngModel)]="myCheckbox5" formControlName="5" ngbButton style="color: black;text-decoration-color: black;"> {{'Saturday'|translate}}
+              <ng-container *ngIf="myCheckbox5" >
+                &nbsp; &nbsp;&nbsp;
+                <ul style="float: right;">
+
+                  <input checked type="checkbox" name="optionsSaturday[0]" value="{{optionsSaturday[0]}}" [(ngModel)]="optionsSaturday[0].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'morning:' | translate }}
+                  <input checked type="checkbox" name="optionsSaturday[1]" value="{{optionsSaturday[1]}}" [(ngModel)]="optionsSaturday[1].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'evening:' | translate }}
+                  <input checked type="checkbox" name="optionsSaturday[2]" value="{{optionsSaturday[2]}}" [(ngModel)]="optionsSaturday[2].checked" [ngModelOptions]="{standalone: true}">
+                  {{ 'afternoon:' | translate }} &nbsp;
+                  {{ 'duration:' | translate }}
+                  <input style="width: 40px;"  type="number" name="optionsSaturday[3]"  value="{{optionsFriday[3]}}" [(ngModel)]="optionsSaturday[3].value"   [ngModelOptions]="{standalone: true}" >
+                  &nbsp;
+                  {{ 'duration:' | translate }}
+                  &nbsp;
+                </ul>
+
+              </ng-container>
+
+            </label>
+          </ul>
+
+
+        </div>
+
+      </ng-container>
+
+
+
+
+
+      <!--
+                    <ul style="height: 20px;margin-left:5px;">
+                  <label  ngbButtonLabel style="
+                  color: black;border-color:white;">
+                    <input type="checkbox" [(ngModel)]="myCheckbox" value="false" name="myCheckbox"  formControlName="0" ngbButton style="color: black;text-decoration-color: black;">{{'Monday'|translate}}
+
+                  </label>
+
+                    <ng-container *ngIf="myCheckbox" >
+                      &nbsp;&nbsp;  &nbsp;&nbsp;
+                      <ul style="float: right;">
+                        <mat-icon>timelapse</mat-icon>Duration:
+
+                      <input type="number" min="1" max="6">
+                      </ul>
+                      <ul style="float: right;">
+                        <p><mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p> </ul>
+                      <ul style="float: right;">
+                        <p><mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p> </ul>
+                        <ul style="float: right;">
+                        <p><mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+                       </ul>
+
+                    </ng-container>
+                </ul>
+
+          <br>
+          <ul style="height: 20px;margin-left:5px;">
+            <label  ngbButtonLabel style="color: black;border-color:white;">
+              <input type="checkbox" [(ngModel)]="myCheckbox1" name="myCheckbox1"  formControlName="1" ngbButton style="color: black;text-decoration-color: black;">{{'Tuesday'|translate}}
+            </label>
+              <ng-container *ngIf="myCheckbox1" >
+                &nbsp;&nbsp;  &nbsp;&nbsp;
+                <ul style="float: right;">
+                  <mat-icon>timelapse</mat-icon>Duration:
+
+                  <input type="number" min="1" max="6">
+                </ul>
+                <ul style="float: right;">
+                  <mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox> </ul>
+                <ul style="float: right;">
+                  <mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></ul>
+                <ul style="float: right;">
+                  <mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox>
+                </ul>
+              </ng-container>
+          </ul>
+          <br>
+          <ul style="height: 20px;margin-left:5px;">
+            <label  ngbButtonLabel style="color: black;border-color:white;">
+              <input type="checkbox"[(ngModel)]="myCheckbox2" name="myCheckbox2"formControlName="2" ngbButton gbButton style="color: black;text-decoration-color: black;">{{'Wednesday'|translate}}
+            </label>
+            <ng-container *ngIf="myCheckbox2" >
+                &nbsp;&nbsp;
+                <ul style="float: right;">
+                  <mat-icon>timelapse</mat-icon>Duration:
+                  <input type="number" min="1" max="6">
+                </ul>
+              <ul style="float: right;">
+                <p><mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+              </ul>
+              <ul style="float: right;">
+                  <p><mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p> </ul>
+
+              </ng-container>
+
+          </ul>
+          <br>
+          <ul style="height: 20px; margin-left:5px;">
+            <label  ngbButtonLabel style="color: black;border-color:white">
+              <input type="checkbox" [(ngModel)]="myCheckbox3"name="myCheckbox3"formControlName="3" ngbButton style="color: black;text-decoration-color: black;"> {{'Thursday'|translate}}
+            </label>
+              <ng-container *ngIf="myCheckbox3" >
+                &nbsp;&nbsp;
+                <ul style="float: right;">
+                  <mat-icon>timelapse</mat-icon>Duration:
+
+                  <input type="number" min="1" max="6">
+                </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+                </ul>
+
+              </ng-container>
+
+          </ul>
+          <br>
+
+          <ul style="height: 20px;margin-left:5px;">
+            <label  ngbButtonLabel style="color: black;border-color:white;">
+              <input type="checkbox" [(ngModel)]="myCheckbox4" name="myCheckbox4"  formControlName="4" ngbButton style="color: black;text-decoration-color: black;">{{'Friday'|translate}}
+            </label>
+              <ng-container *ngIf="myCheckbox4" >
+                &nbsp;&nbsp;
+                <ul style="float: right;">
+                  <mat-icon>timelapse</mat-icon>Duration:
+
+                  <input type="number" min="1" max="6">
+                </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+                </ul>
+
+              </ng-container>
+
+          </ul>
+          <br>
+
+          <ul style="height: 20px;margin-left:5px;">
+            <label  ngbButtonLabel style="    color: black;border-color:white">
+              <input type="checkbox" [(ngModel)]="myCheckbox5" name="myCheckbox5"  formControlName="5" ngbButton style="color: black;text-decoration-color: black;"> {{'Saturday'|translate}}
+            </label>
+              <ng-container *ngIf="myCheckbox5" >
+                &nbsp;&nbsp;
+                <ul style="float: right;">
+                  <mat-icon>timelapse</mat-icon>Duration:
+
+                  <input type="number" min="1" max="6">
+                </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+                </ul>
+
+              </ng-container>
+
+          </ul>
+          <br>
+          <ul style="height: 20px; margin-left:5px;">
+            <label  ngbButtonLabel style="    color: black;border-color:white">
+              <input type="checkbox"[(ngModel)]="myCheckbox6" name="myCheckbox6"  formControlName="6" ngbButton style="color: black;text-decoration-color: black;" >  {{'Sunday'|translate}}
+            </label>
+              <ng-container *ngIf="myCheckbox6" >
+                <ul style="float: right;">
+                  <mat-icon>timelapse</mat-icon>Duration:
+
+                  <input type="number" min="1" max="6">
+                </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p> </ul>
+                <ul style="float: right;">
+                  <p><mat-checkbox formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+                </ul>
+
+              </ng-container>
+
+          </ul>
+          <br>
+           </div>
+      </ng-container>
+-->
+
+      <div class="form-group">
+        <div class="form-control-plaintext">
+          <p class="font-weight-bold">Dates</p>
+          <span class="d-inline-block mr-3" *ngFor="let date of dates" >
+            {{ date | date:'yyyy-MM-dd' }}
+          </span>
+        </div>
+      </div>
+    </div>  </div>
+<hr/>

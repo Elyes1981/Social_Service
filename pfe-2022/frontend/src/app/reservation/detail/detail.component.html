@@ -1,0 +1,123 @@
+<script src="/src/app/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/src/app/assets/vendor/select2/select2.min.js"></script>
+<script src="/src/app/assets/vendor/datepicker/moment.min.js"></script>
+<script src="/src/app/assets/vendor/datepicker/daterangepicker.js"></script>
+<script src="/src/app/assets/js/global.js"></script>
+
+<div class="container">
+  <div class="row" style="margin-top: 1px">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <i class="material-icons">perm_identity</i>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Mou3ina Informations
+          
+          </h4>
+          <button mat-raised-button color="primary" (click)="openPDF()"  style="margin-left: 500px;" ><span><img src="../../../assets/pdf.png" style="width: 30px;height: 30px;">&nbsp; Download</span></button> 
+          
+         
+          <form>
+            
+         
+            <div class="line-items">
+              <div  *ngFor="let customerOrderMou3inaList of customerOrderMou3inaLists">
+                <span  *ngIf="reservation.id==customerOrderMou3inaList.customerReservation.id">
+
+              <div class="headers clearfix">
+                <div class="row">
+                  <div class="col-xs-4">&nbsp;&nbsp;&nbsp;&nbsp;<strong dir="auto"><mat-icon>assignment</mat-icon> CustomerOrderMou3inaList </strong></div>
+                </div>
+              </div>
+
+              <div class="items">
+                <div class="row item">
+                    <span class="col-xs-4 desc"class="input--style-2">&nbsp;&nbsp;&nbsp; Rank</span>
+                   <span class="text-right"> {{ customerOrderMou3inaList.rank}}</span>
+                </div>
+
+                <div class="row item">
+                  <span class="col-xs-4 desc"class="input--style-2">&nbsp;&nbsp;&nbsp; Date of order</span>
+                  <span class=" text-right">
+                  {{customerOrderMou3inaList.orderDay| date:'dd/MM/yyyy'}}
+                  </span>
+                </div>
+                
+              </div>
+                  <div class="row item">
+                    <span class="col-xs-4 desc"class="input--style-2">&nbsp;&nbsp;&nbsp; Name mou3ina</span>
+                  <span class="text-right">
+                    {{ customerOrderMou3inaList.mou3ina.firstName}}
+                  </span>
+                </div>
+                 
+             
+
+              
+                </span></div> </div>
+          
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card right-profile">
+       
+        <h6>Order informations</h6>
+        
+       
+        <div *ngIf="reservation" >
+
+       
+          <div class="input-group">
+            <div dir="auto"> <label><b>{{ 'Desired Hour' | translate }} : &nbsp;</b></label> {{reservation.desiredDate | date:'dd/MM/yyyy'}}</div>
+          </div>
+          <div class="input-group">
+            <div dir="auto"> <label><b> {{ 'Desired Hour' | translate }}: &nbsp;</b></label> {{reservation.desiredHour }}</div>
+          </div>
+
+          <div class="input-group">
+            <div dir="auto"> <label><b> {{ 'status' | translate }}: &nbsp;</b></label>
+              <span *ngIf="lang =='en-US'">{{reservation.statuscode.status_en}}</span>
+              <span dir="rtl" *ngIf="lang =='ar-AR'">{{reservation.statuscode.status_ar}}</span>
+              <span *ngIf="lang =='fr-FR'">{{reservation.statuscode.status_fr}}</span>
+             </div>
+          </div>
+
+          <div class="input-group">
+            <div><strong dir="auto"><mat-icon>assignment</mat-icon>{{ 'Rate' | translate }} </strong>
+              {{reservation.rate}}</div>
+          </div>
+
+          <div class="input-group">
+            <div>
+            <strong dir="auto"><mat-icon>assignment</mat-icon> {{ 'service Type' | translate }} </strong>
+              <div *ngFor="let service of reservation.serviceTypes">
+                <span *ngIf="lang =='en-US'"> <li> {{ service.label }}</li></span>
+                <span dir="rtl" *ngIf="lang =='ar-AR'"> <li> {{service.label_ar}}</li></span>
+                <span *ngIf="lang =='fr-FR'"> <li> {{service.label_fr}}</li></span>
+            </div>
+          </div>
+          </div>
+          
+          <!--div class="col-md-4 ">
+
+           
+            &nbsp;
+            <button mat-raised-button style="background-color:rgb(52, 17, 85)  ; " class="fas fa-file-pdf fa-border fa-3x "  (click)="downloadPDF()"></button>
+            <i class='fas fa-file-pdf fa-border fa-3x   btn-block' style="background-color:rgb(52, 17, 85)  ; width: fit-content; ;" (click)="list()"></i>
+    
+          </div-->
+        </div>
+      </div>
+      <div class="p-t-30" stickyEnd>
+        <button mat-raised-button class="btn--green"  type="submit"  (click)="list()" ><i class='fas fa-angle-double-left' style="color: white;"></i>
+          <span class="glyphicon glyphicon-ok-circle" style="color: white;"> {{"Back to Orders's List"|translate}}</span>
+        </button>
+      </div> 
+      &nbsp;
+     
+    </div>
+  </div>
+</div>
