@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: database-operation
-  name: database-operation
+    app: postgres
+  name: postgres
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: database-operation
+      app: postgres
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: database-operation
+        app: postgres
     spec:
       containers:
       - image: postgres
@@ -27,17 +27,17 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                name: database-operation-secret
+                name: postgres-secret
                 key: database-user
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: database-operation-secret
+                name: postgres-secret
                 key: database-user
           - name: POSTGRES_DB
             valueFrom:
               secretKeyRef:
-                name: database-operation-secret
+                name: postgres-secret
                 key: database-name
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
@@ -46,5 +46,5 @@ spec:
       volumes:
         - name: postgredb
           persistentVolumeClaim:
-            claimName: database-operation-pv-claim
+            claimName: postgres-pv-claim
 status: {}

@@ -1,10 +1,10 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: database-operation-pv-volume
+  name: postgres-pv-volume
   labels:
     type: local
-    app: database-operation
+    app: postgres
 spec:
   storageClassName: manual
   capacity:
@@ -17,9 +17,9 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: database-operation-pv-claim
+  name: postgres-pv-claim
   labels:
-    app: database-operation
+    app: postgres
 spec:
   storageClassName: manual
   accessModes:
