@@ -1,0 +1,56 @@
+[21/07/2022 14:59] BOUKATTAYA Eya SOFRECOM
+  final AppPreferenceHelper _helper = new AppPreferenceHelper();
+
+[21/07/2022 14:59] BOUKATTAYA Eya SOFRECOM
+  await _helper.saveAuthToken(responseJson['accessToken']);
+       _helper.saveIsLoggedIn(true);
+       _helper.saveUserID(responseJson['id'].toString());
+
+[21/07/2022 15:03] BOUKATTAYA Eya SOFRECOM
+import 'dart:async';
+import 'package:demo/shared/constants/app_preferences.dart';
+import 'package:get_storage/get_storage.dart';
+
+class AppPreferenceHelper {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  //AppPreferenceHelper._();
+
+  // shared pref instance
+  final GetStorage _store = GetStorage();
+
+  // General Methods: ----------------------------------------------------------
+  Future<String?> get authToken async {
+    return _store.read(AppPreferences.auth_token);
+  }
+
+  Future<void> saveAuthToken(String authToken) async {
+    return _store.write(AppPreferences.auth_token, authToken);
+  }
+
+[21/07/2022 15:03] BOUKATTAYA Eya SOFRECOM
+  Future<void> removeAuthToken() async {
+    return _store.remove(AppPreferences.auth_token);
+  }
+
+  String? get systemToken {
+    return _store.read(AppPreferences.system_token);
+  }
+
+  Future<void> saveSystemToken(String sysToken) async {
+    return _store.write(AppPreferences.system_token, sysToken);
+  }
+
+  Future<void> removeSystemToken() async {
+    return _store.remove(AppPreferences.system_token);
+  }
+
+  // Login:---------------------------------------------------------------------
+  Future<bool> get isLoggedIn async {
+    return _store.read(AppPreferences.is_logged_in) ?? false;
+  }
+
+  Future<void> saveIsLoggedIn(bool value) async {
+    return _store.write(AppPreferences.is_logged_in, value);
+  }
+
