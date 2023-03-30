@@ -8,6 +8,8 @@ import 'genderModel.dart';
 class customerModel {
   int? id;
 
+  String? Gendre;
+  String? Status;
   String? firstName;
   String? lastName;
   String? username;
@@ -25,6 +27,8 @@ class customerModel {
 
   customerModel(
       {this.id,
+        this.Gendre,
+        this.Status,
       this.firstName,
       this.username,
       this.password,
@@ -41,6 +45,8 @@ class customerModel {
 
   factory customerModel.fromJson(Map<String, dynamic> json) => customerModel(
         id: json["id"],
+    Gendre: json["Gendre"] ?? '',
+    Status: json["Status"] ?? '',
         firstName: json["firstName"] ?? '',
      username: json["username"] ?? '',
         password: json["password"] ?? '',
@@ -57,6 +63,8 @@ class customerModel {
       );
   Map<String, dynamic> toJson() => {
         "id": id,
+    "Gendre": Gendre,
+    "Status": Status,
         "firstName": firstName,
     "username": username,
     "password":password,

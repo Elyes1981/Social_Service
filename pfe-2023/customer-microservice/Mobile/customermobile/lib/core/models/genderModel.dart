@@ -10,13 +10,21 @@ class genderModel {
   genderModel(
       {this.id, this.label, this.label_fr, this.label_ar});
 
+ /* factory genderModel.fromJson(Map<String, dynamic> json) =>
+      genderModel(
+        id: json["id"],
+        label: json["label"] ,
+        label_fr: json["label_fr"] ,
+        label_ar: json["label_ar"],
+      
+      );*/
   factory genderModel.fromJson(Map<String, dynamic> json) =>
       genderModel(
         id: json["id"],
-        label: json["label"] ?? '',
         label_fr: json["label_fr"] ?? '',
+        label: json["label"] ?? '',
         label_ar: json["label_ar"],
-      
+
       );
   Map<String, dynamic> toJson() => {
         "id": id,

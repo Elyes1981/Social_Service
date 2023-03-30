@@ -139,8 +139,47 @@ class Register extends GetView<RegisterController> {
             ),*/
                             ),
                       ),
+
                       SizedBox(
                         height: 15,
+                      ),
+                      Container(
+                        child: TextFormField(
+                          controller: controller.Gendre,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your Gendre';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Gendre',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        child: TextFormField(
+                          controller: controller.Status,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your status';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'status',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(),
+                            ),
+                          ),
+                        ),
                       ),
                       Container(
                         child: TextFormField(
@@ -204,7 +243,7 @@ class Register extends GetView<RegisterController> {
 
                             firstDate: DateTime(
                                 2000), //DateTime.now() - not to allow to choose before today.
-                            lastDate: DateTime(2023),
+                            lastDate: DateTime(2030),
                           );
 controller.birthDate.text=pickedDate.toString().substring(0,10);
                           if (pickedDate != null) {

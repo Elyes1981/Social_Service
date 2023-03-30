@@ -37,7 +37,8 @@ print('ttested');
  Future<customerModel> updateCases(String id, customerModel customer) async {
     Map data = {
       'name': customer.firstName,
-      'gender': customer.gender,
+      //'gender': customer.gender,
+      'Gendre': customer.Gendre,
       
       //'mou3inas_preferences': customer.mou3inas_preferences
     };

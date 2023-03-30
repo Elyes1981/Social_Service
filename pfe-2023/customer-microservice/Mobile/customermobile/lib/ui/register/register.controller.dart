@@ -23,13 +23,15 @@ class RegisterController extends GenericController {
   StatusService statusService = Get.find();
   GenderService genderService = Get.find();
   CustomerService customerService = Get.find();
-late List<Map<String, dynamic>> GenderList = [];
+  late List<Map<String, dynamic>> GenderList = [];
   late List<Map<String, dynamic>> StatusList = [];
    
    RxList<customerModel> customerList=List<customerModel>.empty().obs;
   RxBool isloading = true.obs;
   RxList<String> selectedValues = List<String>.empty().obs;
   RxBool isSelected = true.obs;
+  late TextEditingController Gendre;
+  late TextEditingController Status;
   late TextEditingController firstName;
   late TextEditingController lastName;
   late TextEditingController phone;
@@ -44,8 +46,10 @@ late List<Map<String, dynamic>> GenderList = [];
   @override
   void onInit() {
     findGender();
-    //findCustomer();
+    findCustomer();
     findStatus();
+    Gendre = new TextEditingController();
+    Status = new TextEditingController();
     firstName = new TextEditingController();
     lastName = new TextEditingController();
     phone = new TextEditingController();
@@ -55,6 +59,8 @@ birthDate= new TextEditingController();
   }
 
   void initialization() async {
+    Gendre = new TextEditingController();
+    Status = new TextEditingController();
     firstName = new TextEditingController();
     lastName = new TextEditingController();
     phone = new TextEditingController();
@@ -80,6 +86,8 @@ birthDate= new TextEditingController();
   addcustomer(bool isvalid) async {
     if (isvalid) {
       customer = new customerModel();
+      customer.Gendre = Gendre.text;
+      customer.Status = Status.text;
       customer.firstName = firstName.text;
       customer.lastName = lastName.text;
       customer.phone = phone.text;
