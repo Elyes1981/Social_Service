@@ -1,0 +1,31 @@
+
+
+<div  role="dialog">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <form  >
+
+
+
+<mat-dialog-content class="mat-typography">
+  <div class="modal-header">
+    <h2 mat-dialog-title>{{ 'Recherche de réservation' | translate }}  {{data.id}}</h2>
+    <button type="button"  data-dismiss="modal" aria-hidden="true" mat-dialog-close >×</button>
+  </div>
+  <div class="modal-body">
+    <p>{{ 'Êtes-vous sûrs de supprimer la recherche?' | translate }}</p>
+    <p class="text-danger"><small>{{ 'Cette action ne peut pas être annulée.' | translate }}</small></p>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions  align="end">
+  <button mat-button mat-dialog-close class="btn btn-secondary" >{{ 'Cancel' | translate }}</button>
+  <button mat-button [mat-dialog-close]="true"  cdkFocusInitial type="submit"
+          (click)="deleteReservation(data.id)" class="btn btn-danger">{{ 'Delete' | translate }}</button>
+</mat-dialog-actions>
+        <br>
+      </form>
+    </div>
+    </div>
+  </div>

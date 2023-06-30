@@ -1,0 +1,15 @@
+<form [formGroup]="customerForm" >
+    <div mat-dialog-content>
+      <p>{{'Put your cooptation Id'|translate }}</p>
+      <mat-form-field>
+        <input matInput   [(ngModel)]="data.cooptedById" formControlName="cooptedById">
+    
+         
+        
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data.cooptedById" cdkFocusInitial>{{'Add'|translate}}</button>
+     
+    </div>
+    </form>

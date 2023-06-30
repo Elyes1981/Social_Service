@@ -1,0 +1,23 @@
+.example-card {
+    width: 800px;
+    max-height: 600;
+    position: relative;
+    text-align: center;
+    top:5px;
+    
+    right: 100px;
+    left: 200px;
+  }
+  ngb-rating {
+    color: #FFC107;
+    font-size: 80px;
+  }
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 5px;
+  width: 10;
+}
+  
+  .btn{
+    padding: 2px;
+ }

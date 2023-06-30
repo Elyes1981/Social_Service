@@ -1,0 +1,103 @@
+name: customermobile
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.16.0<3.0.0'
+
+
+dependencies:
+  country_state_city_pro: ^0.0.3
+  gender_picker: ^1.1.0
+  gender_selection: "^0.0.8"
+  intl_phone_field: ^3.1.0
+  intl: ^0.17.0
+  email_validator: ^2.0.1
+  flutter_pw_validator: ^1.4.2
+  flutter_map: any
+  location: ^4.2.0
+  tuple: ^1.0.2
+  latlong: ^0.6.1
+  geocoding: ^2.0.4
+  shared_preferences: ^2.0.15
+  flutter_facebook_auth: ^4.3.4+1
+  positioned_tap_detector_2: ^1.0.0
+  transparent_image: ^1.0.0
+  flutter_material_pickers: ^3.1.4+1
+  async: ^2.1.0
+  flutter_image: ^3.0.0
+  vector_math: ^2.0.0
+  proj4dart: ^1.0.4
+  sliding_switch: ^1.0.0
+  meta: ^1.1.0
+  table_calendar: ^3.0.5
+  collection: ^1.14.0
+  geolocator: ^8.2.1
+  calendar_appbar: ^0.0.6
+  flutter_map_marker_popup: ^0.3.0
+  introduction_screen: ^3.0.2
+  multiselect_formfield: ^0.1.7
+  http: ^0.13.4
+  flutter_signin_button: ^2.0.0
+  firebase_auth: ^4.2.9
+  sms_autofill: ^2.2.0
+  google_sign_in: ^4.4.6
+  numberpicker: ^2.0.1
+  time_range: ^1.0.2
+
+  dropdown_button2: ^1.4.0
+  select_form_field: ^2.2.0
+  #rating_dialog: ^2.0.0
+  favorite_button: ^0.0.4
+  flutter_time_picker_spinner: ^2.0.0
+  get_storage: ^2.0.3
+  flutter_datetime_picker: ^1.5.1
+  toggle_switch: "^0.1.4"
+  date_format: ^2.0.6
+  flutter_svg: ^1.0.3
+  persistent_bottom_nav_bar: ^4.0.2
+  flutter_rating_bar: ^1.1.0
+  #firebase_core_platform_interface: 4.5.1
+  firebase_messaging: ^14.3.0
+  firebase_core: ^2.7.0
+  #cloud_firestore: ^3.1.10
+  flutter_local_notifications: ^13.0.0
+  #js: ^0.6.2
+  flutter_plugin_android_lifecycle: ^2.0.8
+  awesome_notifications: ^0.7.4+1
+  flutter_slidable: ^3.0.0
+  google_maps_flutter: ^2.1.0
+  csc_picker: ^0.2.6
+
+
+  flutter:
+    sdk: flutter
+
+
+
+  flutter_localizations:
+    sdk: flutter
+
+  get: ^4.6.1
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+
+
+
+  assets:
+    - assets/i18n/
+    - assets/images/

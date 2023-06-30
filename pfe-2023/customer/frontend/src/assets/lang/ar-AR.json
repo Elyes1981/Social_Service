@@ -1,0 +1,185 @@
+{
+  "choose_language": "إختر اللغة",
+  "choose_Title-addreservation":"إضافة الحجز ",
+  "nbmo3ina":"عدد العاملات",
+  "Desired Date":"التاريخ المطلوب",
+  "Desired Hour":"الساعة المرغوبة",
+  "grade Average":"الدرجة",
+  "status":"الحالة",
+  
+ 
+  "DETAILS ORDER": "تفاصيل الحجز",
+  "payment Status":"حالة الدفع المالي",
+  
+  "service Type":"نوع الخدمة",
+  "info": "التفاصيل",
+  "language.Arabic": "عربي",
+  "language.English": "English",
+  "language.french": "Français",
+  "Action":"الخيارات",
+  "Update":"تحديث",
+  "Delete":"حذف",
+  "Details":"التفاصيل",
+  "Cancel":"إلغاء",
+  "Êtes-vous sûrs de supprimer la recherche?": "هل أنت متأكد أنك تريد الحذف ؟",
+  "Recherche de réservation": "البحث عن الحجز",
+  "Cette action ne peut pas être annulée.": "لا يمكن التراجع عن هذا الإجراء إذ تم الحذف.",
+  "Reset": "إعادة البحث",
+  "Select work shift:":"تحديد مواعيد العمل",
+  "morning:": ":الصباح",
+  "afternoon:":" :الظهر",
+  "evening:": ":المساء",
+  "Research": "إضافة البحث ",
+  "Demande mou3ina":"الطلب",
+  "Order": "الحجز",
+  "help": "المساعدة",
+  "mou3ina": "معينة",
+  "Monday": "الاثنين",
+  "Recurrent": "دورية",
+  "Tuesday": "الثلاثاء",
+  "Wednesday": "الأربعاء",
+  "Thursday": "الخميس",
+  "Friday": "الجمعة",
+  "Saturday": "السبت",
+  "Sunday": "الأحد",
+  "Weekly": "أسبوعي",
+  "Daily": "يوميًا",
+  "Operation Date":"تاريخ التسجيل",
+ 
+  "addReservation": "إضافة الحجز",
+  "Frequency": "متكرر",
+  "Add Research": "أضف البحث",
+  "Researvation details": "التفاصيل البحث الدوري",
+  "duration": "المدة (س)",
+  "statistique": "إحصائيات",
+  "ID Mou3ina": "رقم هوية المعينة",
+ 
+  "Home Adress":"عنوان منزل المعينة",
+  
+  "title": "الحريف", 
+  "gender": "الجنس",
+  "Customer":"الحريف",
+  "Birth Date":  "تاريخ الولادة ",
+ "View":"التفاصيل","Edit":"تحديث",
+  "Actions":"الإجراءات"
+  ,"emailAdress":  " البريد الكتروني",
+
+  "First Name must be more than 2 characters":"يجب أن يتكون الإسم من أكثر من حرفين",
+ "Personal Info":"معلومات شخصية",
+  "Last Name must be more than 2 characters":"يجب أن يتكون اللقب من أكثر من حرفين",
+  "Home Adress must be more than 6 characters":"يجب أن يتكون العنوان من أكثر من 6 أحرف",
+  "Code must be between 3 and 4 digits":"يجب أن يتكون الرمز من 3 أو 4 أرقام",
+  "Photo":"الصورة",
+ "Executive":"المدير التنفيذي",
+  "Help":"المزيد من المعلومات ",
+  "Customers List":"قائمة الحرفاء",
+  "Create":"إضافة",
+   
+   
+    "Payment Details ":"معلومات عن طريقة الدفع ",
+    
+    "Status":"الحالة المدنية",
+    "Put your cooptation Id":"أضف معرف المُوصٍي",
+        
+    "Add":"أضف",
+    "This action can't be reverted":"لا يمكن التراجع عن هذا الإجراء",
+          "Are you sure ?":"هل أنت واثق ?",
+     "Villa":"فيلا",
+    "Phone Number": "رقم الهاتف",
+   
+  
+    
+    
+    
+
+    "firstName":  "الإسم",
+      "lastName": "اللقب",
+      "Female":"أنثى  ",
+      "Male":"ذكر",  "Single":"أعزب/عزباء ", "Married":"متزوج(ة)", "Divorced":"مطلق(ة)",
+      "gouvernerat": "الولاية",
+     
+      "delegation":  "المعتمدية",
+   
+
+
+  
+
+  "home_Adress":  "العنوان "
+ 
+   ,
+  "Coopted By":  "موصى به من قبل",
+  "Coopted By Id":  " معرف المُوصٍي ",
+ 
+"Submit": "إضافة ",
+
+
+
+"creditCardNumber": "رقم بطاقة الإئتمان",
+ 
+"Cooptation Details":"معلومات عن التوصية",
+
+"ID":"المعرف",
+ 
+ 
+  
+  
+  
+  "Operationnel":"مشغل",
+  "Marketing campaign":"حملة تسويق",
+     
+" Getting your Current Location details":"Getting your Current Location details",
+        
+         
+          
+ "Residence Details":"معلومات عن السكن",
+" Payment Mean":"طريقة الدفع",
+  "Office Area":"مساحة المكتب",
+         
+          "Apartment":"شقة",
+          "Office":"مكتب",
+          "Items per page":"Items per page",
+          
+          "Choose Your Payement Mean":"إختر طريقة الدفع",
+      
+          "Residence Type":  "نوع الإقامة"
+          ,
+          "Profil":"الملف الشخصي",
+          "Step 1":"Step 1",
+        "Step 2":"Step 2",
+        "Step 3":"Step 3",
+          "numberOfPersonInRes": " عدد الأشخاص"
+          
+         ,
+          "Full Name":"الإسم الكامل",
+          "residenceNumberOfrooms":   "عدد الغرف",
+          "Number of rooms in residence":" عدد الغرف في السكن",
+          "Number of persons in residence":"عدد الأشخاص في السكن ", 
+          
+          "Clear":"حذف",
+        
+          "creditCardCVV2" :  " رمز بطاقة الإئتمان"
+         
+          ,
+          "creditCardExpireDate" :  "تاريخ إنتهاء الصلاحية"
+          ,
+          "This field is mandatory":"ضروري* ",
+         
+        
+          "Next":"التالي ",
+          "Back":"اللاحق ",
+         
+          "Customer Details":"معلومات عن الحريف",
+          
+          
+        
+        
+       
+       
+         "Back to Customer List":"الرجوع إلى قائمة الحرفاء",
+        "HouseKeeper":"معينة منزلية ",
+        
+        "Personal Details":"تفاصيل شخصية", 
+        "Paiement Details":"تفاصيل الدفع",
+        "Home":"الصفحة الرئيسية"
+      }
+
