@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: operation
+  labels:
+    app: operation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: operation
+  template:
+    metadata:
+      labels:
+        app: operation
+    spec:
+      containers:
+        - name: operation
+          image: firas1234/operation-mk:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_INCLUDE
+              value: "kubernetes"
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: operation
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: operation
+                  key: password
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 800Mi
+            limits:
+              cpu: "1.0"
+              memory: 800Mi
+          volumeMounts:
+            - name: operation-volume
+              mountPath: /etc/secretspot
+      volumes:
+        - name: operation-volume
+          secret:
+            secretName: operation
+      serviceAccountName: api-service-account

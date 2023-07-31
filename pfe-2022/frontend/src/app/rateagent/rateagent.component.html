@@ -1,0 +1,32 @@
+<form [formGroup]="agentform" (submit)="onSubmit()" >
+<mat-card class="example-card">
+    <mat-card-title > Welcome {{currentUser.username}}</mat-card-title>
+    <mat-card-subtitle> <br> Positive reviews from customers  help other  to feel confident about choosing our Application. </mat-card-subtitle>
+    &nbsp;
+    <div class="textt">
+      
+    </div>
+    <div class="img_rate">
+        <mat-card-subtitle> Could you take 60 seconds to rate your agent
+            {{currentUser.agent.firstName}}<br>
+            {{currentUser.agent.lastname}}
+            and notify him with an email please
+        </mat-card-subtitle>
+       
+        <img src="../../assets/C2.jpg" width="300"  >&nbsp;
+      
+    </div><br><br>
+    
+   
+    <ngb-rating [max]="5" [(ngModel)]="currentUser.agent.rate"  formControlName="rate" [readonly]="false"></ngb-rating>
+
+    <!--ngb-rating [max]="5"   formControlName="rate" [readonly]="false"></ngb-rating-->
+    <!--p>form is valid: {{ form.valid ? 'true' : 'false' }}</p-->
+    <div class="button-row" [align]="'end'">
+    <button style=" margin-left: 450px;" type="submit" mat-raised-button >{{ 'Rate' | translate }}  </button>  
+    &nbsp;
+    
+    <button type="button" class="btn"  (click)="onSend(currentUser.agent.email)"><mat-icon>email</mat-icon></button>
+</div>
+</mat-card>
+</form>

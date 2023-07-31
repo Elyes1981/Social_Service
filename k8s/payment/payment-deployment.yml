@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  labels:
+    app: payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: firas1234/payment-mk:1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_INCLUDE
+              value: "kubernetes"
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: payment
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: payment
+                  key: password
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 800Mi
+            limits:
+              cpu: "1.0"
+              memory: 800Mi
+          volumeMounts:
+            - name: payment-volume
+              mountPath: /etc/secretspot
+      volumes:
+        - name: payment-volume
+          secret:
+            secretName: payment
+      serviceAccountName: api-service-account

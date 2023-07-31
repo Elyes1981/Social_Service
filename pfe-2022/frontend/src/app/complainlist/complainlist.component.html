@@ -1,0 +1,57 @@
+
+<button mat-raised-button id="butadd" aria-label="Example icon button with a home icon"  style="    margin-left: 20px;background-color: #336498;;" >
+    <mat-icon  style="color:white">add</mat-icon><span  style="color:white"translate>New Complaint</span></button>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <i class="material-icons">report_problem</i>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Complaint Box </h4>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead class="text-primary">
+                      <tr>
+                        <th style="color: black;">Complaint Type</th>
+                        <th style="color: black;"> Complaint Sub Types</th>
+                        <th  style="color: black;">Other</th>
+                        <th  style="color: black;">Creation Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let complain of ALlcomplains ">
+                            <td>{{complain.complainType.label}}</td>
+                                
+                            <td>{{complain.sousTypes.label}}</td>
+                             <td>{{complain.autre}}</td>
+                            <td>{{complain.complainDate | date:'dd/MM/yyyy'}}</td>
+                            
+                            <td>
+                                <!--   <button type="button" class="btn btn-success" (click)="getNavigation('view', product.p_id)">View</button>
+                        <button type="button" class="btn btn-warning" (click)="getNavigation('update', product.p_id)">Edit</button>-->
+                            <!--button  *ngIf="complain.complainType == null" type="button" class="btn "  (click)="onAjouter(complain.id,complain,mymodalComplain)"><mat-icon>playlist_add</mat-icon></button>
+                            <button type="button" class="btn"  (click)="onSend(complain.customer.emailAdress)"><mat-icon>email</mat-icon></button>
+                          <button *ngIf="complain.complainType != null"  type="button" class="btn" ><mat-icon>done</mat-icon></button--></td>
+    
+                          </tr>
+                       
+                     
+                       
+                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+   
+    
+    
+   
+    
+          
+       
+    

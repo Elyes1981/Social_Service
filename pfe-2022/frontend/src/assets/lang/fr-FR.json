@@ -1,0 +1,154 @@
+{
+    "choose_language": "Choisissez la langue",
+    "choose_Title-addreservation":"Ajouter une réservation client",
+    "nbmo3ina":"Nombre de Mou3ina",
+    "Desired Date":"Date souhaitée",
+    "Desired Hour":"Heure souhaitée",
+    "grade Average":"Moyenne de grade",
+    "status":"statut",
+   
+    "DETAILS ORDER": "Détails réservation",
+   
+   
+    "service Type":"Type de service",
+    "payment Status":"Statut de paiement",
+    "info": "Montrer l'information",
+   
+    "Action":"Actions",
+    "Update":"Modifier",
+   
+    "Details":"Détails",
+ 
+    "Êtes-vous sûrs de supprimer la recherche?": "Êtes-vous sûrs de supprimer la recherche?",
+    "Recherche de réservation": "Recherche de réservation",
+    "Cette action ne peut pas être annulée.": "Cette action ne peut pas être annulée.",
+    "Reset": "Réinitialiser",
+    "Select work shift:":"Planification des périodes de travail:",
+    "morning:": "Matin",
+    "afternoon:":"Après midi",
+    "evening:": "La soirée",
+    "Research": "Ajouter recherche",
+    "Demande mou3ina": "Demande",
+    "Order": "Commande",
+    "help": "Aide",
+    "mou3ina": "Mou3ina",
+    "Monday": "Lundi",
+    "Recurrent": "Périodicité",
+    "Tuesday": "Mardi",
+    "Wednesday": "Mercredi",
+    "Thursday": "Jeudi",
+    "Friday": "Vendredi",
+    "Saturday": "Samedi",
+    "Sunday": "Dimanche",
+    "Weekly": "Hebdomadaire",
+    "Daily": "Quotidien",
+    "ID": "ID",
+    "addReservation": "Ajouter Réservation",
+    "Operation Date":"Operation Date",
+    "Frequency": "Fréquence",
+    "Add Research": "Ajouter Recherche",
+    "Researvation details": "Détails de recherche récurente",
+    "duration": "Durée(H)",
+    "statistique": "Statistiques",
+    "ID Mou3ina": "Id mou3ina",
+    "firstName":"Prénom",
+    "lastName" : "Nom",
+    
+      "Gender": "Genre"
+   
+  ,
+    "title": "Client",
+    "Actions":"Actions",
+   
+   
+    "Photo":"Photo",
+    "Step 1":"Etape 1",
+    "Step 2":"Etape 2",
+    "Step 3":"Etape 3",
+   "Personal Info":"Info Personnelle",
+
+  "Executive":"Exécutive",
+   
+    "Birth Date": "Date de Naissance ",
+    "First Name must be more than 2 characters":"Le prénom doit comporter plus de 2 caractères",
+    "Last Name must be more than 2 characters":"Le nom doit comporter plus de 2 caractères",
+    "Home Adress must be more than 6 characters":"L'adresse doit comporter plus de 6 caractères",
+    "This field is mandatory":"Ce Champ est obligatoire",
+    "Code must be 3 or 4 digits ":"Le code doit comporter entre 3 ou 4 chiffres",
+      "Home Adress":  "Adresse",
+ 
+      "Payment Details":"Détails de Paiement",
+      "Residence Details":"Détails de Résidence",
+      " Payment Mean":"Carte de Paiement",
+     "creditCardNumber" : "Numéro de Carte Bancaire",
+      
+      "creditCardCVV2" :  "Code CVV",
+     
+      "creditCardExpireDate" : "Date d'expiration",
+      "Cooptation Details":"Détails de Cooptation",
+      "Number of rooms in residence":"Nombre de chambres dans la résidence",
+      "Number of persons in residence":"Nombre de personnes dans la résidence",
+      "Put your cooptation Id":"Insérer votre id de cooptation",
+      "Status": "Etat Civil",
+      "Add":"Ajouter",
+      "Phone Number": "Numéro de téléphone"
+      ,
+      "State": "Gouvernorat"
+        ,
+      "Villa":"Villa",
+      "Residence Type":   "Type de Résidence"
+      ,
+      "Full Name":"Nom et Prénom",
+
+      "numberOfPersonInRes":  " Nombre de personnes"
+        
+      ,
+      "residenceNumberOfrooms": " Nombre de chambres"
+        
+      ,
+      "City": "Délégation"
+        
+      ,
+      " Getting your Current Location details":" les détails de votre emplacement actuel",
+      
+      "Coopted By Id": "Id de Source de Cooptation",
+      "Clear":"Effacer",
+      "Apartment":"Appartement",
+      "Office":"Bureau",
+      "No data matching the filter":"Aucune donnée correspondant à ce filtre", 
+      "Items per page":"éléments par page",
+      "emailAdress": "Adresse Email",
+    
+      "Next":"Suivant ",
+      "Back":"Précédent",
+      "Male":"Homme","Female":"Femme",
+      "View":"Détails","Edit":"Modifier","Delete":"Supprimer",
+    "Customer Details":"Détails de client",
+    "Submit":"Soumettre",
+    "Cancel":"Annuler",
+    "Profil":"Profile",
+    "requiredErrorMessage": "Ce Champ est obligatoire.",
+    "successfulSubmitMessage": "Client est ajoutee avec succes.",
+    "Customer":"Client",
+    "Help":"Centre d'aide",
+    "Choose Your Payement Mean":"Choisir votre moyen de Payement",
+    "Customers List":"Liste de clients",
+    "Create": "Ajouter",
+    "Single":"Célibataire", "Married":"Marié(e)", "Divorced":"divorcé(e)",
+    "Office Area":"Metrage du Bureau",
+    "Marketing campaign":"campagne Marketing",
+    "HouseKeeper":"Femme de Ménage",
+    "Operationnel":"Operationnel",
+    "Back to Customer List":"Liste de clients",
+    "language.Arabic": "عربي",
+    "language.English": "English",
+    "language.french": "Français",
+    "Coopted By":"Coopté Par",
+     "This action can't be reverted":"Cette action ne peut pas être annulée",
+    "Are you sure ?":"êtes vous sûr ?",
+    "Personal Details":"Détails personnels", 
+    "Paiement Details":"Détails de paiement",
+    "Home":"page d'accueil"
+  
+  
+}

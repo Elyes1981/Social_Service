@@ -1,0 +1,82 @@
+table {
+    width: 100%;
+  }
+  #butadd{
+    margin-right: 15px;
+    background-color:#87CEFA;
+}
+#datatable{
+background-color: 	#F5F5F5;
+}
+#icon-green {
+  color: cornflowerblue;
+}
+ngb-rating {
+  color: rgb(85, 5, 85);
+  font-size: 30px;
+}
+#icon-red {
+  color: crimson;
+}
+#icon-blue{
+color: limegreen;
+}
+.icon-large {
+  font-size: 25px;
+}
+#text1{
+color: CadetBlue;
+}
+#text2{
+color: CadetBlue;
+}
+#text3{
+color: CadetBlue;
+}
+.mat-elevation-z8{
+  width: 100%;
+}
+#butadd[_ngcontent-ynn-c144]  {
+  margin-right: 15px;
+  background-color: #e7ebed;
+}
+th.mat-header-cell .mat-sort-header-container.mat-sort-header-sorted .mat-sort-header-arrow {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+.mat-form-field {
+
+    width: 117px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #19872e;
+    border-color: #198754;
+}
+
+  .btn--green {
+    color: #fff;
+    background: #57b846;
+    border-color: #198754;
+  }
+
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 10px;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+
+    border-color: white;
+}
+
+th {
+    padding-right: 0;
+    padding-left: 0px;
+}
+

@@ -1,0 +1,280 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<div class="container">
+  <div class="main-body">
+  
+        <!-- Breadcrumb -->
+      
+        <!-- /Breadcrumb -->
+  
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  
+                  
+                  
+                  <div class="mt-3">
+                    <!--img   class="w-100" src="../../assets/img.jpg"  class="rounded-circle" width="200" height="200"-->
+                    <img  id="logo" class="w-100" [src]="getLogo()"  class="rounded-circle" width="200" height="200">
+
+                    <h4> {{currentUser.firstName}} {{currentUser.lastName}}</h4>
+                    <p class="text-secondary mb-1">{{currentUser.emailAdress}}</p>
+                    <br>
+                    <p class="text-muted font-size-sm">{{currentUser.phone}}</p>
+                    <!--button class="btn btn-primary" (click)="updateCustomer(customer.id)"></button-->
+                    <button mat-raised-button  class="btn--green" (click)="updateCustomer(currentUser.id)"><span translate style="color: white;">Edit </span><mat-icon style="color: white;">edit</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <br>
+          <br>
+          
+
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-handshake-o" aria-hidden="true" style="color: white;"></i>&nbsp; <span style="color: white;">{{'Paiement Details'|translate}}</span>
+           </div>
+           <br>
+           <div class="card-body">
+            
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h5 class="mb-0"><div class="col-sm-3">
+                   
+                  </div>{{ ' Paiment Mean' | translate }}</h5>
+                  <div class="col-sm-9 text-secondary">
+                  <span class="text-secondary">
+                    {{currentUser.paymentMean}}
+                  </span>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h5 class="mb-0"><div class="col-sm-3">
+                   
+                  </div>{{ "creditCardNumber" | translate }}</h5>
+                  <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                    {{currentUser.creditCardNumber}}
+                  </div></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h5 class="mb-0"><div class="col-sm-3">
+                   
+                  </div>{{ "creditCardCVV2" | translate }}</h5>
+                  <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                    {{currentUser.creditCardCVV2}}
+                  </div></span>
+                </li>
+                
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h5 class="mb-0"><div class="col-sm-3">
+                   
+                  </div>{{ "creditCardExpireDate" | translate }}</h5>
+                  <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                    {{currentUser.creditCardExpireDate| date:'MM/yyyy'}}
+                  </div></span>
+                </li>
+
+               
+               
+                
+                
+              </ul>
+           </div> 
+            </div>
+          
+            <div class="example-button-container">
+              <button mat-raised-button  color="" aria-label="Example icon button with a home icon" style="width: 100px; height: 50;"   routerLink="/">
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="card-header">
+                  <i class="material-icons" style="color:white ;">perm_identity</i><span style="color:white;">Personal Details</span>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0" >{{'Full Name'|translate}}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{currentUser.firstName}} {{currentUser.lastName}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0">{{ 'Birth Date' | translate }}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{currentUser.birthDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0" >{{ 'Gender' | translate }}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <div *ngIf="lang =='en-US'">{{currentUser.gender.label}}</div>
+      <div *ngIf="lang =='fr-FR'">{{currentUser.gender.label_fr}}</div>
+      <div *ngIf="lang =='ar-AR'">{{currentUser.gender.label_ar}}</div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0">{{ 'Status' | translate }}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <div *ngIf="lang =='en-US'">{{currentUser.status.label}}</div>
+      <div *ngIf="lang =='fr-FR'">{{currentUser.status.label_fr}}</div>
+      <div *ngIf="lang =='ar-AR'">{{currentUser.status.label_ar}}</div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0">{{ 'Home Adress' | translate }}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{currentUser.home_Adress}}
+                  </div>
+                </div>
+                
+               
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0">{{ "State" | translate }}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    
+                    <span *ngIf="lang =='en-US'">{{currentUser.gouvernerat.name}}</span>
+      <span *ngIf="lang =='fr-FR'">{{currentUser.gouvernerat.name}}</span>
+      <span *ngIf="lang =='ar-AR'">{{currentUser.gouvernerat.name_ar}}</span>
+                    </div>
+                  
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h5 class="mb-0">{{ "City" | translate }}</h5>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <span *ngIf="lang =='en-US'">{{currentUser.delegation.name}}</span>
+                    <span *ngIf="lang =='fr-FR'">{{currentUser.delegation.name}}</span>
+                    <span *ngIf="lang =='ar-AR'">{{currentUser.delegation.name_ar}}</span>
+                  </div>
+                </div>
+                
+                
+                
+                
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row gutters-sm">
+              <div class="card mb-3">
+                <div class="card-header">
+                   <mat-icon style="color: white;">home</mat-icon>&nbsp; <span style="color: white;">{{'Residence Details'|translate}}</span>
+                </div>
+                <br>
+                <div class="card-body">
+                  <div class="row">
+            
+                  <ul class="list-group list-group-flush">
+                   
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h5 class="mb-0"><div class="col-sm-3">
+                       
+                      </div>{{ "Residence Type" | translate }}</h5>
+                      <div class="col-sm-9 text-secondary">
+                      <span class="text-secondary">
+                        <div *ngIf="lang =='en-US'">{{currentUser.residenceType.label}}</div>
+                        <div *ngIf="lang =='fr-FR'">{{currentUser.residenceType.label_fr}}</div>
+                        <div *ngIf="lang =='ar-AR'">{{currentUser.residenceType.label_ar}}</div>
+                      </span>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h5 class="mb-0"><div class="col-sm-3">
+                       
+                      </div>{{ "Number of rooms in residence" | translate }}</h5>
+                      <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                        {{currentUser.residenceNumberOfrooms}}
+                      </div></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h5 class="mb-0"><div class="col-sm-3">
+                       
+                      </div>{{ "Number of persons in residence" | translate }}</h5>
+                      <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                        {{currentUser.numberOfPersonInRes}}
+                      </div></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h5 class="mb-0">
+                        <div class="col-sm-3" ></div>
+                        {{ "Office Area" | translate }}
+                    </h5>
+                      <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                        {{currentUser.metrage}}
+                      </div></span>
+                    </li>
+                    
+    
+                    
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <h5 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"> <i class="fa fa-handshake-o" aria-hidden="true"></i></i>&nbsp; {{'Cooptation Details'|translate}}</h5>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h5 class="mb-0"><div class="col-sm-3">
+                       
+                      </div>{{ "Coopted By" | translate }}</h5>
+                      <div class="col-sm-9 text-secondary">
+                      <span class="text-secondary">
+                        <div *ngIf="lang =='en-US'">{{currentUser.cooptedByType.label}}</div>
+      <div *ngIf="lang =='fr-FR'">{{currentUser.cooptedByType.label_fr}}</div>
+      <div *ngIf="lang =='ar-AR'">{{currentUser.cooptedByType.label_ar}}</div>
+                        
+                      </span>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h5 class="mb-0"><div class="col-sm-3">
+                       
+                      </div>{{ "Coopted By Id" | translate }}</h5>
+                      <span class="text-secondary"><div class="col-sm-9 text-secondary">
+                        {{currentUser.cooptedById}}
+                      </div></span>
+                     
+                    </li>
+                   
+                   
+                   
+                    
+                    
+                  </ul>
+            </div>
+                </div>
+              </div>
+              </div>
+              
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+      
+      

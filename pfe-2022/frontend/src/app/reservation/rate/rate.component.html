@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+<!-- Syncfusion Essential JS 2 Scripts -->
+<script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+
+<div mat-dialog-content>
+
+
+
+    <form [formGroup]="reservationForm"  (ngSubmit)="onSubmit()">
+        <mat-card class="example-card">
+            <mat-card-title >Rating</mat-card-title>
+            <mat-card-subtitle>Your Feedback is so important to help us improve our services</mat-card-subtitle>
+            &nbsp;<img src="../../assets/C2.jpg" width="300"  >&nbsp;
+            <br>
+            
+            <!--ngx-star-rating formControlName="rating" [id]="'rating'"  ></ngx-star-rating>
+            <div >Rating: {{reservationForm.value.rating}}</div-->
+                <mat-form-field appearance="outline" hidden>
+                    <mat-label>{{ 'Desired Hour' | translate }} </mat-label>
+                    <input matInput type="time"  formControlName="desiredHour" id="desiredHour" min="05:00"  max="18:00"
+                           [(ngModel)]="reservation.desiredHour" >
+                  </mat-form-field>
+          
+                    <ejs-datepicker  appearance="outline" hidden style=" margin-left: 650px;margin-top: -75px;" class="form-control" matInput *ngIf="lang =='ar-AR'" enableRtl='true' locale='ar-TN'  formControlName="desiredDate"
+                                     [(ngModel)]="reservation.desiredDate"  [min]="minDate"  required >
+          
+                    </ejs-datepicker>
+          
+                    <ejs-datepicker appearance="outline" hidden style=" margin-left: 650px;margin-top: -75px;" class="form-control" matInput *ngIf="lang =='en-US'" enableRtl='true' locale='en'  formControlName="desiredDate"
+                                    [(ngModel)]="reservation.desiredDate"              [min]="minDate"   required >
+          
+                    </ejs-datepicker>
+                    <ejs-datepicker appearance="outline" hidden  style=" margin-left: 650px;margin-top: -75px;" class="form-control" matInput *ngIf="lang =='fr-FR'" enableRtl='true' locale='fr'  formControlName="desiredDate"
+                                    [(ngModel)]="reservation.desiredDate"    [min]="minDate"     required >
+          
+                    </ejs-datepicker>
+                   
+          
+                  <mat-form-field appearance="outline" hidden >
+                    <mat-label>{{ 'status' | translate }}</mat-label>
+                    <mat-select name="statuscode"  id="statuscode" type="number" formControlName="statuscode"
+                                required  [(ngModel)]="reservation.statuscode"
+                                (ngModelChange)="setNewStatus($event)">
+                      <mat-option    [attr.selected]="true" [value]=" reservation.statuscode">
+                        <div *ngIf="lang =='en-US'" >--{{reservation.statuscode.status_en}}--</div>
+                        <div *ngIf="lang =='ar-AR'">--{{reservation.statuscode.status_ar}}--</div>
+                        <div *ngIf="lang =='fr-FR'">--{{reservation.statuscode.status_fr}}--</div>
+                      </mat-option>
+                      <mat-option *ngFor="let statuscode of status"  [value]="statuscode">
+                        <div *ngIf="lang =='en-US'">{{statuscode.status_en}}</div>
+                        <div *ngIf="lang =='ar-AR'">{{statuscode.status_ar}}</div>
+                        <div *ngIf="lang =='fr-FR'">{{statuscode.status_fr}}</div>
+                      </mat-option>
+                    </mat-select>
+          
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" hidden>
+                    <mat-label>{{ 'grade Average' | translate }}</mat-label>
+                    <input matInput placeholder="Placeholder" [(ngModel)]="reservation.gradeAverage"  required
+                           min="1" max="5"   type="number" formControlName="gradeAverage">
+                  </mat-form-field>&nbsp;&nbsp;
+                  <mat-form-field appearance="outline" hidden>
+                    <mat-label>{{ 'nbmo3ina' | translate }}</mat-label>
+                    <input matInput  [(ngModel)]="reservation.numberOfMou3ina" min="1" max="3" required type="number" formControlName="numberOfMou3ina">
+                  </mat-form-field>&nbsp;&nbsp;
+                  &nbsp;<br>
+          
+                  <mat-form-field appearance="outline" hidden>
+                    <mat-label>{{ 'service Type' | translate }}</mat-label>
+                    <mat-select  formControlName="serviceTypes"   multiple [(ngModel)]="reservation.serviceTypes" [compareWith]="compareWithIdFn"
+                                 required >
+                      <input type="checkbox" formControlName="serviceTypes" >
+                      <div *ngIf="lang =='en-US'">
+                        <mat-option *ngFor="let serviceTypes of serviceTypess"  [value]="serviceTypes">
+                          {{serviceTypes.label}}</mat-option>
+                        </div>
+                      <div *ngIf="lang =='ar-AR'">
+                        <mat-option *ngFor="let serviceTypes of serviceTypess"  [value]="serviceTypes" >
+                          {{serviceTypes.label_ar}}</mat-option>
+                      </div>
+                      <div *ngIf="lang =='fr-FR'">
+                        <mat-option *ngFor="let serviceTypes of serviceTypess"  [value]="serviceTypes" >
+                          {{serviceTypes.label_fr}}</mat-option>
+                      </div>
+          
+                    </mat-select>
+                  </mat-form-field>
+          
+          
+                  <mat-form-field appearance="outline" hidden>
+                    <mat-label>{{ 'payment Status' | translate }}</mat-label>
+                    <mat-select  type="text"  [(ngModel)]="reservation.paymentStatus" formControlName="paymentStatus" required>
+                      <mat-option>--</mat-option>
+          
+                      <mat-option value="null" >
+                        Null
+                      </mat-option>
+                      <mat-option value="Waiting" >
+                        Waiting
+                      </mat-option>
+                      <mat-option value="Paid" >
+                        Paid
+                      </mat-option>
+                      <mat-option value="Notpaid" >
+                        Notpaid
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <h4 style=" margin-left: 500px;" hidden>{{ 'Select  work shift:' | translate }}</h4>
+        <section style=" margin-left: 500px;"class="example-section" hidden>
+          <p><mat-checkbox [(ngModel)]="reservation.morning" formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p>
+          <p><mat-checkbox [(ngModel)]="reservation.afternoon"formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p>
+          <p><mat-checkbox [(ngModel)]="reservation.evening" formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+
+        </section>
+
+
+                  <!--mat-form-field appearance="outline">
+                    <mat-label>{{ 'rate' | translate }}</mat-label>
+                    <input matInput  [(ngModel)]="reservation.rate" min="1" max="5" required type="number" formControlName="rate">
+                  </mat-form-field--> 
+                <ngb-rating [max]="5" [(ngModel)]="reservation.rate"  formControlName="rate" [readonly]="false"></ngb-rating>
+            <!--p>form is valid: {{ form.valid ? 'true' : 'false' }}</p-->
+            <button style=" margin-left: 450px;" type="submit" mat-raised-button >{{ 'Submit' | translate }}  </button>  
+        </mat-card>
+          <br>
+       
+
+   
+    </form>
+
+</div>
