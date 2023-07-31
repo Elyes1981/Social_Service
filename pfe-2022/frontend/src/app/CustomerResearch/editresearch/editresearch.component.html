@@ -1,0 +1,11 @@
+
+  <strong><mat-icon>assignment</mat-icon>{{'service' | translate }}</strong>
+
+      <div *ngFor="let service of recherche.serviceTypes ">
+
+        <span *ngIf="lang=='en-US'" > <li> {{ service.label }} </li>  </span>
+        <span *ngIf="lang=='fr-FR'">  <li> {{ service.label_fr }}</li> </span>
+        <span *ngIf="lang=='ar-AR'">  <li> {{ service.label_ar }}</li> </span>
+
+      </div>
+

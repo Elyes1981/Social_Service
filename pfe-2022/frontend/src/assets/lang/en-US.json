@@ -1,0 +1,158 @@
+{
+  "choose_language": "Choose languge",
+  "choose_Title-addreservation": "Add Customer Reservation",
+  "nbmo3ina": "Number Of Mou3ina",
+  "Desired Hour": "Desired Hour ",
+  "grade Average": "Grade Average",
+  "Desired Date": "Desired Date",
+  "payment Status": "Payment Status",
+  "service Type": "Service Type",
+  "status": "Status",
+  
+  "info": "Show Info",
+
+  "DETAILS ORDER": "DETAILS ORDER",
+
+  "Action": "Actions",
+  "Update": "Update",
+  
+  "Details": "Details",
+  
+  "Êtes-vous sûrs de supprimer la recherche?": "Are you sure you want to delete the search?",
+  "Recherche de réservation": "Reservation search",
+  "Cette action ne peut pas être annulée.": "This action cannot be undone",
+  "Reset": "Reset",
+  "Select work shift:": "Select work shift:",
+  "morning:": "Morning",
+  "afternoon:": "Afternoon",
+  "evening:": "Evening",
+  "Research": "Add search",
+  "Demande mou3ina": "Request",
+  "Order":"Order",
+  "help": "Help",
+  "mou3ina":"mou3ina",
+  "Monday": "Monday",
+  "Recurrent": "periodicity",
+  "Tuesday": "Tuesday",
+  "Wednesday": "Wednesday",
+  "Thursday": "Thursday",
+  "Friday": "Friday",
+  "Saturday": "Saturday",
+  "Sunday": "Sunday",
+  "Weekly": "Weekly",
+  "Daily": "Daily",
+  "ID": "ID",
+  "addReservation": "Add Reservation",
+  "Operation Date":"Operation Date",
+  "Frequency": "Frequency",
+  "Add Research": "Add Research",
+  "Researvation details": "Récurent Researvation details",
+  "duration": "Duration(H)",
+  "statistique": "Statistics",
+  "ID Mou3ina": "ID Mou3ina",
+  "firstName":"FirstName",
+
+  "Home Adress":"Home Adress",
+  "Gender":  "Gender",
+    "title": "Customer",
+   
+    "First Name must be more than 2 characters":"First Name must be more than 2 characters",
+    "Last Name must be more than 2 characters":"Last Name must be more than 2 characters",
+    "Home Adress must be more than 6 characters":"Home Adress must be more than 6 characters",
+    "Code must be between 3 and 4 digits":"Code must be between 3 and 4 digits",
+    "Actions":"Actions",
+   
+   "Photo":"Photo",
+    "lastName":  "Last Name",
+   "Executive":"Executive",
+   " Getting your Current Location details":"Getting your Current Location details",
+    "Birth Date": "Birth Date",
+      "Personal Info":"Personal Info",
+      "home_Adress":  "Home Adress",
+     
+      "Payment Details":"Payment Details",
+      "Residence Details":"Residence Details",
+      "Cooptation Details":"Cooptation Details",
+     " Payment Mean":"Payment Mean",
+      "Office Area":"Office Area",
+      "cooptedBy": "cooptedBy",
+     
+      "Apartment":"Apartement",
+      "Office":"Office",
+      "Items per page":"Items per page",
+      "Phone Number":  "Phone Number",
+      "Choose Your Payement Mean":"Choose Your Payement Mean",
+      "Edit":"Edit" ,
+      "Delete":"Delete",
+      "View":"View",
+      "State":  "State",
+      
+      "Residence Type":  "Residence Type"
+      ,
+      "Profil":"Profil",
+      
+      "Step 1":"Step 1",
+    "Step 2":"Step 2",
+    "Step 3":"Step 3",
+      "numberOfPersonInRes":  " Number Of Persons"
+        
+      ,
+      "Number of rooms in residence":"Number of rooms in residence",
+      "Number of persons in residence":"Number of persons in residence",
+      "Full Name":"Full Name",
+      "residenceNumberOfrooms" : " Number Of Rooms",
+        
+      
+      "Clear":"Clear",
+      "creditCardNumber" : "creditCardNumber",
+    
+      "creditCardCVV2" :  "creditCardCVV2",
+    
+      "creditCardExpireDate" : "creditCardExpireDate",
+      
+      "This field is mandatory":"This field is mandatory ",
+      "Status":"Status",
+      "Put your cooptation Id":"Put your cooptation Id",
+        
+      
+      "City": 
+        "City",
+        "Villa":"Villa",
+      "Next":"Next ",
+      "Back":"Back",
+      "Male":"Male","Female":"Female",
+      
+      
+       
+      "emailAdress":  "Email Adress",
+     
+      "Customer Details":"Customer Details",
+    "Submit": "Submit",
+    
+    "Cancel": "Cancel",
+    "Create": "Create",
+      
+    "requiredErrorMessage": "This is a required field.",
+    "successfulSubmitMessage": "Customer has been added successfully.",
+    "Customer":"Customer",
+    "new customer":"new customer",
+    "Help":"Help",
+    "Single":"Single", "Married":"Married", "Divorced":"Divorced",
+    "Marketing campaign":"Marketing campaign",
+    "HouseKeeper":"HouseKeeper",
+    "Operationnel":"Operationnel",
+    "Back to Customer List":"Back to Customer List",
+    "language.Arabic": "عربي",
+          "language.English": "English",
+          "language.french": "Français",
+          "Coopted By":"coopted By",
+          "Coopted By Id": "Coopted By Id",
+          "Add":"Add",
+          "This action can't be reverted":"This action can't be reverted",
+          "Are you sure ?":"Are you sure ?",
+
+          "Personal Details":"Personal Details", 
+          "Paiement Details":"Paiement Details",
+          "Home":"Home"
+  
+}

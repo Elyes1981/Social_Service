@@ -1,0 +1,30 @@
+.example-card {
+  width: 800px;
+  max-height: 600;
+  position: relative;
+  text-align: center;
+  top:5px;
+  
+  right: 100px;
+  left: 200px;
+}
+  ngb-rating {
+    color: #FFC107;
+    font-size: 80px;
+}
+.img_rate{
+text-align: left;
+margin-left: 100px;
+display: inline-flex;
+}
+.notification-card{
+  padding: 23px 20px 18px 20px;
+}
+
+.notification-card h4{
+  margin-bottom: 15px;
+}
+
+.place{
+  padding: 20px;
+}

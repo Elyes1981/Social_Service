@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search
+  labels:
+    app: search
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: search
+  template:
+    metadata:
+      labels:
+        app: search
+    spec:
+      containers:
+        - name: search
+          image: search-microservice
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_INCLUDE
+              value: "kubernetes"
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: search
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: search
+                  key: password
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 800Mi
+            limits:
+              cpu: "1.0"
+              memory: 800Mi
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /search/actuator/health
+            initialDelaySeconds: 60
+            timeoutSeconds: 2
+            periodSeconds: 20
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /search/actuator/info
+            initialDelaySeconds: 60
+            timeoutSeconds: 2
+            periodSeconds: 20
+            failureThreshold: 5
+          volumeMounts:
+            - name: search-volume
+              mountPath: /etc/secretspot
+      volumes:
+        - name: search-volume
+          secret:
+            secretName: search
+      serviceAccountName: api-service-account

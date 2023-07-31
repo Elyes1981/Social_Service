@@ -1,0 +1,169 @@
+
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+<!-- Syncfusion Essential JS 2 Scripts -->
+<script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+<div class="container-fluid" >
+<br><br>
+  <div class="p-t-30" dir='auto'>
+    <!--button class="btn btn--green" type="submit"  (click)="add()">
+      {{ 'addReservation' | translate }}
+    </button-->
+    
+    <button mat-raised-button  (click)="add()" aria-label="Example icon button with a home icon"  style="    margin-left: 20px;background-color: #2b0b5a;;" >
+      <mat-icon style="color:white"  >add</mat-icon><span  style="color:white"> {{ 'addReservation' | translate }}</span></button> 
+
+  </div>
+  <br>
+  <div *ngIf="lang ">
+  <mat-form-field>
+    <mat-label>{{ 'Desired Date' | translate }}</mat-label>
+    <input matInput (keyup)="applyFilter(date)" type="date" [(ngModel)]="date"  #input>
+  </mat-form-field>
+  <mat-form-field style="position: relative;margin-left: 5px;">
+    <mat-label>{{ 'Desired Hour' | translate }}</mat-label>
+    <input matInput (keyup)="applyFiltertime($event)" type="time"   #input>
+  </mat-form-field>
+
+  
+  <mat-form-field style="position: relative;margin-left: 30px;">
+    <mat-label>{{ 'nbmo3ina' | translate }}</mat-label>
+    <input matInput (keyup)="applyFilternbmo3ina($event)" type="number" min="1" max="3" #input>
+  </mat-form-field>
+    <!--
+  <mat-form-field style="position: relative; margin-left: 190px;">
+    <mat-label>{{ 'Service Type' | translate }}</mat-label>
+    <input matInput (keyup)="applyFilterservicetype($event)" type="text"  #input>
+  </mat-form-field>-->
+    <mat-form-field style="position: relative; margin-left:450px;">
+      <mat-label>{{ 'status' | translate }}</mat-label>
+      <input matInput (keyup)="applyFilterstatus($event)" type="text"  #input>
+    </mat-form-field>
+  <button  style="position: relative; margin-left: 7%;width: 119px;" type="button" class="btn btn-secondary" data-dismiss="modal"  (click)="refresh()">
+    {{ 'Reset' | translate }}
+  </button>
+  </div>
+<table   mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="1130px" matSort >
+
+ 
+  
+   
+    <ng-container matColumnDef="DesiredDate">
+        <th mat-header-cell *matHeaderCellDef > {{ 'Desired Date' | translate }} </th>
+        <td mat-cell  *matCellDef="let element">
+
+          <div >{{element.desiredDate | date:'dd/MM/yyyy' }} </div></td>
+
+    </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="DesiredHour">
+        <th mat-header-cell *matHeaderCellDef>{{ 'Desired Hour' | translate }}  </th>
+        <td mat-cell *matCellDef="let element">{{element.desiredHour }}</td>
+      </ng-container>
+      <ng-container matColumnDef="NumberOfMou3ina">
+        <th mat-header-cell *matHeaderCellDef> {{ 'nbmo3ina' | translate }} </th>
+        <td mat-cell *matCellDef="let element"> {{element.numberOfMou3ina}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Rate">
+        <th mat-header-cell *matHeaderCellDef>{{ 'Rate' | translate }}   </th>
+        <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+   
+          <!-- Weight Column -->
+    <ng-container matColumnDef="OperationDate">
+        <th mat-header-cell *matHeaderCellDef> {{'Operation Date' | translate }}</th>
+        <td mat-cell *matCellDef="let element"> {{element.operationDate | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="PaymentStatus">
+        <th mat-header-cell *matHeaderCellDef >{{ 'payment Status' | translate }}  </th>
+        
+        <td  mat-cell *matCellDef="let element"translate> {{element.paymentStatus }} </td>
+        
+      </ng-container>
+         <!-- Symbol Column -->
+         <ng-container matColumnDef="ServiceTypeId" name="ServiceTypeId">
+            <th mat-header-cell *matHeaderCellDef >{{ 'Service Type' | translate }}   </th>
+            <td mat-cell *matCellDef="let element" >
+              <div *ngFor="let service of element.serviceTypes">
+                          
+                <li>
+                  <span *ngIf="lang=='en-US'">  {{service.label }}</span>
+                  <span *ngIf="lang=='fr-FR'">  {{service.label_fr }}</span>
+                  <span *ngIf="lang=='ar-AR'">  {{service.label_ar }}</span> 
+                </li> 
+              </div>
+
+            </td>
+          </ng-container>
+       <!-- Name Column -->
+       <ng-container matColumnDef="Status" name="Status">
+        <th mat-header-cell *matHeaderCellDef >{{ 'status' | translate }}  </th>
+         <td mat-cell *matCellDef="let element" >
+        <div *ngIf="lang =='en-US'">{{element.statuscode.status_en}}</div>
+           <div *ngIf="lang =='ar-AR'">{{element.statuscode.status_ar}}</div>
+           <div *ngIf="lang =='fr-FR'">{{element.statuscode.status_fr}}</div>
+         </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="star" stickyEnd >
+        <th mat-header-cell *matHeaderCellDef   class="font-weight-bold" style="text-align:center"><mat-icon>build</mat-icon>&nbsp;{{ 'Action' | translate }} </th>
+        <td mat-cell *matCellDef="let element" style="text-align:center">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+
+
+
+            <button mat-menu-item  (click)="detail(element.id)">
+              <mat-icon id="icon-green" (click)="detail(element.id)">article</mat-icon>
+              <span>{{ 'Details' | translate }}</span>
+            </button>
+            <button mat-menu-item  (click)="detail1(element.id)">
+              <mat-icon id="icon-green" (click)="detail1(element.id)">article</mat-icon>
+              <span>{{ 'Favoris' | translate }}</span>
+            </button>
+
+            <button mat-menu-item  (click)="update(element.id)">
+              <mat-icon id="icon-green" (click)="update(element.id)">edit</mat-icon>
+              <span>{{ 'Update' | translate }}</span>
+            </button>
+
+
+            <!--button mat-menu-item (click)="deletemodel(element.id)">
+              <mat-icon id="icon-red">delete</mat-icon>
+              <span>{{ 'Delete' | translate }}</span>
+            </button-->
+            <button mat-menu-item (click)="update1(element.id)">
+              <mat-icon id="icon-green">star</mat-icon>
+              <span>Rating</span>
+            </button>
+
+            <button mat-menu-item  (click)="reclam()">
+              <mat-icon id="icon-green" (click)="reclam()">cancel</mat-icon>
+              <span>Complaint</span>
+            </button>
+           
+            
+
+          </mat-menu>
+        </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   
+  </table>
+
+
+  <mat-paginator [length]="100"
+              [pageSize]="4"
+              [pageSizeOptions]="[2, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+
+
+</div>
+
+

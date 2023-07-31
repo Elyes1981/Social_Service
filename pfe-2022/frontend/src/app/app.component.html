@@ -1,0 +1,232 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+  <link rel="icon" href="https://softun-teletravail.sofrecom-tunisie.com/static/assets/img/favicon.ico" type="image/icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+ 
+</head>
+    <div class="over">
+      <div *ngIf="lang=='ar-AR'">
+      <mat-sidenav-container   dir='rtl' *ngIf="isLoggedIn"  >
+        <mat-sidenav #sidenav class="mat-elevation-z8"  dir='rtl'>
+          <a  class="brand-link">
+            <img class="avatar mat-elevation-z8 "  src="data:image/jpeg;base64,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">&nbsp;
+            <span class="brand-text font-weight-light "><b>{{"mou3ina"|translate}}</b> </span>
+          </a>
+
+          <mat-divider></mat-divider>
+
+          <button mat-button class="menu-button">
+            <i class="fas fa-search "style="zoom: 160%;  "></i>&nbsp;&nbsp;
+            <span routerLink="/addResearch">{{"Demande mou3ina"|translate}}</span>
+          </button>
+          <button mat-button class="menu-button">
+            <span class="fas fa-shopping-bag" style="zoom:160%; "></span>&nbsp;&nbsp;
+            <span routerLink="/list">{{"Orders"|translate}} </span>
+          </button>
+          <button mat-button class="menu-button">
+            <span class="material-icons"  style="zoom: 140%;">query_stats</span>&nbsp;
+            <span routerLink="/Statistical">Rating Agent </span>
+          </button>
+
+
+          <mat-divider></mat-divider>
+          <button mat-button class="menu-button">
+            <span class="material-icons"  style="zoom:137%;">Rating</span>&nbsp;
+            <span >{{"help"|translate}} </span>
+          </button>
+          <mat-divider></mat-divider>
+
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+
+
+          <nav  dir='rtl' class="main-header navbar navbar-expand navbar-white navbar-light sidebar" >
+
+            <div class="row" dir='rtl' >
+              <div class="col-12">
+                <ul class="navbar-nav float-right">
+
+                  <li class="nav-item">
+                    <a class="nav-link example-icon" data-widget="pushmenu"  mat-icon-button
+                       aria-label="Example icon-button with menu icon" role="button">
+                      <mat-icon (click)="sidenav.toggle()" >menu</mat-icon></a>
+                  </li>
+
+
+                
+
+                  <li>
+                    <div class="float-right">
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div dir='rtl' class="collapse navbar-collapse justify-content-end " *ngIf="!isLoggedIn">
+              <span class="example-spacer"></span>
+              
+              <li class="language-picker-area"> &nbsp;&nbsp;
+                &nbsp;      <img src="../assets/im.png" style="width: 20px;" >
+                <select (change)="selectLanguage($event)" class="language-picker">
+                  <option value="en-US" [selected]="lang=='en-US'">{{ 'language.English' | translate }}</option>
+                  <option value="fr-FR"[selected]="lang=='fr-FR' "> {{ 'language.french' | translate }} </option>
+                  <option value="ar-AR"[selected]="lang=='ar-AR' "> {{ 'language.Arabic' | translate }} </option>
+                </select>
+              </li>
+
+              <a class="nav-link" href="javascript:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Salut, &nbsp; <i class="fas fa-user-alt" style="zoom: 150%; color: grey;"></i>
+                <p class="d-lg-none d-md-block"></p>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <a class="dropdown-item" >Mon profil</a>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div>
+              </div>
+
+            </div>
+
+          </nav>
+          <div >
+
+              <router-outlet>
+              </router-outlet>
+            </div>
+
+
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+      </div>
+
+      <div *ngIf="lang!=='ar-AR'">
+        <mat-sidenav-container   dir='ltr'  >
+          <mat-sidenav #sidenav class="mat-elevation-z8"  dir="auto" *ngIf="isLoggedIn">
+            <a  class="brand-link" >
+              <img class="avatar mat-elevation-z8 "  src="https://img.freepik.com/free-vector/flat-customer-support-illustration_23-2148899114.jpg?w=2000"
+              
+              >
+              <br/>
+              <span class="brand-text font-weight-light "> <b><span translate>Hello {{currentUser.firstName}} {{currentUser.lastName}}</span></b></span>
+            </a>
+
+            <mat-divider></mat-divider>
+           
+            <button mat-button class="menu-button">
+              <span class="material-icons"  style="zoom: 120%;">person</span>&nbsp;
+              <span routerLink="/profile">Profil</span>
+            </button>
+            <button mat-button class="menu-button">
+              <i class="fas fa-search "style="zoom: 160%;  "></i>&nbsp;&nbsp;
+              <span routerLink="/addResearch">{{"Demande mou3ina"|translate}}</span>
+            </button>
+            <button mat-button class="menu-button">
+              <i class="fas fa-shopping-bag" style="zoom:160%; "></i>&nbsp;&nbsp;
+              <span routerLink="/list">{{"Orders"|translate}} </span>
+            </button>
+            <button mat-button class="menu-button">
+              <span class="material-icons"  style="zoom: 120%;">star</span>&nbsp;
+              <span routerLink="/rateAgent">Rating Agent</span>
+            </button>
+            <button mat-button class="menu-button">
+              <mat-icon>favorite</mat-icon>
+              <span routerLink="/pref_list">Preferences</span>
+            </button>
+            <button mat-button class="menu-button">
+              <mat-icon>report_problem</mat-icon>
+              <span routerLink="/complainlist">Complains </span>
+            </button>
+
+
+            <mat-divider></mat-divider>
+
+            <button mat-button class="menu-button">
+              <span class="material-icons"  style="zoom:137%;">help</span>&nbsp;
+              <span>{{"help"|translate}}</span>
+            </button>
+
+          </mat-sidenav>
+          <mat-sidenav-content>
+
+
+            <nav  class="main-header navbar navbar-expand navbar-white navbar-light sidebar">
+
+              <div class="row">
+                <div class="col-12">
+                  <ul class="navbar-nav float-right">
+
+                    <li class="nav-item" *ngIf="isLoggedIn">
+                      <a class="nav-link example-icon" data-widget="pushmenu"  mat-icon-button
+                         aria-label="Example icon-button with menu icon" role="button">
+                        <mat-icon (click)="sidenav.toggle()" >menu</mat-icon></a>
+                    </li>
+
+
+                   
+                    <li>
+                      <div class="float-right">
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="collapse navbar-collapse justify-content-end ">
+                <span class="example-spacer"></span>
+                
+                <li class="language-picker-area" *ngIf="!isLoggedIn"> &nbsp;&nbsp;
+                
+                  <a routerLink="/login" routerLinkActive="router-active" [routerLinkActiveOptions]="{exact: true}"><i class="material-icons">fingerprint</i><p>LOGIN</p></a>
+             
+                </li>
+                &nbsp; &nbsp;
+                <li class="language-picker-area" *ngIf="!isLoggedIn"> &nbsp;&nbsp;
+                  
+                  <a routerLink="register" routerLinkActive="router-active"><i class="material-icons">person_add</i><p>{{"REGISTER"|translate}} </p></a>
+
+                </li>
+                &nbsp; &nbsp;
+                <li class="language-picker-area"> &nbsp;&nbsp;
+                 
+                  <!--mat-icon matBadge="5">notifications</mat-icon-->
+               
+                &nbsp; &nbsp;      <img src="../assets/im.png" style="width: 20px;" >&nbsp; &nbsp; 
+                <select (change)="selectLanguage($event)" class="language-picker">
+                  <option  value="en-US" [selected]="lang=='en-US'">{{ 'language.English' | translate }}</option>
+                  <option value="fr-FR"[selected]="lang=='fr-FR' "> {{ 'language.french' | translate }} </option>
+                  <option value="ar-AR"[selected]="lang=='ar-AR' "> {{ 'language.Arabic' | translate }} </option>
+                </select>
+              </li>
+
+
+
+
+              
+               
+                <button mat-raised-button id="butadd" (click)="logout()" *ngIf="isLoggedIn" aria-label="Example icon button with a home icon"  style="    margin-left: 20px;background-color: #2b0b5a;;" >
+                  <mat-icon style="color:white"  > logout </mat-icon><span  style="color:white">LogOut</span></button> 
+
+              </div> </nav>
+            <br><br>
+            <div >
+
+
+                <router-outlet>
+                </router-outlet>
+              </div>
+
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+      </div>
+     
+</div>
+
+
+
+
+
+

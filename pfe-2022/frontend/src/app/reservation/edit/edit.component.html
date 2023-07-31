@@ -1,0 +1,177 @@
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+<!-- Syncfusion Essential JS 2 Scripts -->
+<script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+
+<div mat-dialog-content>
+
+
+
+    <form [formGroup]="reservationForm"  (ngSubmit)="onSubmit()">
+      <mat-stepper orientation="horizontal">
+        <mat-step>
+          <ng-template matStepLabel>Step 1</ng-template>
+
+          <h1 style=" margin-left: 450px;"mat-dialog-title>Edit Customer Research </h1>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'Desired Hour' | translate }} </mat-label>
+          <input matInput type="time"  formControlName="desiredHour" id="desiredHour" min="05:00"  max="18:00"
+                 [(ngModel)]="reservation.desiredHour" >
+        </mat-form-field>
+
+          <ejs-datepicker  appearance="outline"  style=" margin-left: 650px;margin-top: -75px;" class="form-control" matInput *ngIf="lang =='ar-AR'" enableRtl='true' locale='ar-TN'  formControlName="desiredDate"
+                           [(ngModel)]="reservation.desiredDate"  [min]="minDate"  required >
+
+          </ejs-datepicker>
+
+          <ejs-datepicker appearance="outline" style=" margin-left: 650px;margin-top: -75px;" class="form-control" matInput *ngIf="lang =='en-US'" enableRtl='true' locale='en'  formControlName="desiredDate"
+                          [(ngModel)]="reservation.desiredDate"              [min]="minDate"   required >
+
+          </ejs-datepicker>
+          <ejs-datepicker appearance="outline"  style=" margin-left: 650px;margin-top: -75px;" class="form-control" matInput *ngIf="lang =='fr-FR'" enableRtl='true' locale='fr'  formControlName="desiredDate"
+                          [(ngModel)]="reservation.desiredDate"    [min]="minDate"     required >
+
+          </ejs-datepicker>
+         
+
+        <mat-form-field appearance="outline" >
+          <mat-label>{{ 'status' | translate }}</mat-label>
+          <mat-select name="statuscode"  id="statuscode" type="number" formControlName="statuscode"
+                      required  [(ngModel)]="reservation.statuscode"
+                      (ngModelChange)="setNewStatus($event)">
+            <mat-option    [attr.selected]="true" [value]=" reservation.statuscode">
+              <div *ngIf="lang =='en-US'" >--{{reservation.statuscode.status_en}}--</div>
+              <div *ngIf="lang =='ar-AR'">--{{reservation.statuscode.status_ar}}--</div>
+              <div *ngIf="lang =='fr-FR'">--{{reservation.statuscode.status_fr}}--</div>
+            </mat-option>
+            <mat-option *ngFor="let statuscode of status"  [value]="statuscode">
+              <div *ngIf="lang =='en-US'">{{statuscode.status_en}}</div>
+              <div *ngIf="lang =='ar-AR'">{{statuscode.status_ar}}</div>
+              <div *ngIf="lang =='fr-FR'">{{statuscode.status_fr}}</div>
+            </mat-option>
+          </mat-select>
+
+        </mat-form-field>
+          <div [align]="'end'">
+            <button mat-button matStepperNext type="button" class="btn btn-primary">{{'Next' | translate }}</button>
+          </div>
+        </mat-step>
+
+
+        <mat-step>
+
+          <ng-template matStepLabel>Step2</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'grade Average' | translate }}</mat-label>
+          <input matInput placeholder="Placeholder" [(ngModel)]="reservation.gradeAverage"  required
+                 min="1" max="5"   type="number" formControlName="gradeAverage">
+        </mat-form-field>&nbsp;&nbsp;
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'nbmo3ina' | translate }}</mat-label>
+          <input matInput  [(ngModel)]="reservation.numberOfMou3ina" min="1" max="3" required type="number" formControlName="numberOfMou3ina">
+        </mat-form-field>&nbsp;&nbsp;
+        &nbsp;<br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'service Type' | translate }}</mat-label>
+          <mat-select  formControlName="serviceTypes"   multiple [(ngModel)]="reservation.serviceTypes" [compareWith]="compareWithIdFn"
+                       required >
+            <input type="checkbox" formControlName="serviceTypes" >
+            <div *ngIf="lang =='en-US'">
+              <mat-option *ngFor="let serviceTypes of serviceTypess"  [value]="serviceTypes">
+                {{serviceTypes.label}}</mat-option>
+              </div>
+            <div *ngIf="lang =='ar-AR'">
+              <mat-option *ngFor="let serviceTypes of serviceTypess"  [value]="serviceTypes" >
+                {{serviceTypes.label_ar}}</mat-option>
+            </div>
+            <div *ngIf="lang =='fr-FR'">
+              <mat-option *ngFor="let serviceTypes of serviceTypess"  [value]="serviceTypes" >
+                {{serviceTypes.label_fr}}</mat-option>
+            </div>
+
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'payment Status' | translate }}</mat-label>
+          <mat-select  type="text"  [(ngModel)]="reservation.paymentStatus" formControlName="paymentStatus" required>
+            <mat-option>--</mat-option>
+
+            <mat-option value="null" >
+              Null
+            </mat-option>
+            <mat-option value="Waiting" >
+              Waiting
+            </mat-option>
+            <mat-option value="Paid" >
+              Paid
+            </mat-option>
+            <mat-option value="Notpaid" >
+              Notpaid
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <div [align]="'end'">
+          <button mat-button matStepperPrevious type="button" style="width: 9%;" mat-button class="btn btn-primary" >{{ 'Back' | translate }}</button>
+&nbsp;
+          <button mat-button  matStepperNext  style="width: 9%;" type="button" class="btn btn-primary">{{'Next' | translate }}</button>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Step3</ng-template>
+        <h4 style=" margin-left: 500px;">{{ 'Select  work shift:' | translate }}</h4>
+        <section style=" margin-left: 500px;"class="example-section">
+          <p><mat-checkbox [(ngModel)]="reservation.morning" formControlName="morning">{{ 'morning:' | translate }}</mat-checkbox></p>
+          <p><mat-checkbox [(ngModel)]="reservation.afternoon"formControlName="afternoon">{{ 'afternoon:' | translate }}</mat-checkbox></p>
+          <p><mat-checkbox [(ngModel)]="reservation.evening" formControlName="evening">{{ 'evening:' | translate }}</mat-checkbox></p>
+
+        </section>
+
+
+        <div [align]="'end'">
+          <button mat-button matStepperPrevious type="button" style="width: 9%;" mat-button class="btn btn-primary" >{{ 'Back' | translate }}</button>
+          &nbsp;
+          <button mat-button  matStepperNext  style="width: 9%;" type="button" class="btn btn-primary">{{'Next' | translate }}</button>
+        </div>
+        </mat-step>
+          <br>
+
+
+
+
+
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+
+            <input  class="example-section1" class="custom" type=checkbox   (ngModelChange)="setRecuurent()" [(ngModel)]="reservation.recurrent"   formControlName="recurrent"  > {{'Recurrent' | translate }}
+
+
+
+            <ng-container *ngIf="recurrent" >
+              <hr >
+              <mat-panel-title style="text-align:center;background-color: hsla(0, 100%, 50%, 0.1);margin-top:0px;height:54px">
+                <h2   style="text-align:center">{{'Researvation details'|translate}} </h2>
+              </mat-panel-title>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div >
+
+  Cette rebrique n'est pas modifiable vous pouvez annuler votre commande...
+              <hr/>
+              </div>
+            </ng-container>
+<br>
+        <button style="width: 9%;" class="btn btn-primary" mat-button matStepperPrevious>{{ 'Back' | translate }}</button>
+        <button style=" margin-left: 390px;" class="btn btn--radius btn--green center" class="btn btn-success" type="submit" mat-raised-button >{{ 'Update' | translate }}  </button>
+
+        </mat-step></mat-stepper>
+    </form>
+
+</div>

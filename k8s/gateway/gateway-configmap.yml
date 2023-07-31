@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: gateway
+data:
+  server.port: "9090"
+  server.servlet.contextPath: "/gateway"
+  spring.cloud.kubernetes.discovery.all-namespaces: "true"
+  management.endpoints.web.exposure.include: "health,info,metrics,prometheus"
+  management.metrics.enable.all: "true"
+  management.metrics.distribution.percentiles-histogram.http.server.requests: "true"
+  management.metrics.distribution.sla.http.server.requests: "1ms,5ms"
+  spring.output.ansi.enabled: "ALWAYS"
+  spring.application.name: "GATEWAY MICROSERVICE"
+  spring.mvc.static-path-pattern: "/static/**"
+  spring.cloud.gateway.discovery.locator.enabled: "true"
+  spring.cloud.gateway.discovery.locator.lower-case-service-id: "true"

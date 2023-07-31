@@ -1,0 +1,99 @@
+    <mat-card class="example-card">
+      <mat-card-title >Favorite</mat-card-title>
+      <mat-card-subtitle>Your Feedback is so important to help us improve our services</mat-card-subtitle>
+      &nbsp;
+      <div class="card-content">
+        <img src="../../assets/fav.jpg" width="240"  >&nbsp;
+        <br>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="text-primary">
+              <tr>
+                <th style="color: black;">firstName</th>
+                <th style="color: black;"> LastName</th>
+                <th  style="color: black;">Service Type</th>
+                <th  style="color: black;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mou3inaordered of customerOrderMou3inaLists ">
+                    <td>{{mou3inaordered.mou3ina.firstName}}</td>
+                    <td>{{mou3inaordered.mou3ina.lastName}}</td>
+                    <td>
+                    <div *ngFor="let service of mou3inaordered.mou3ina.serviceType"> 
+                    <li> {{ service.label }}</li>
+                    </div></td>
+                    <!--td>{{complain.autres}}</td>
+                    <td>{{complain.complainDate | date:'dd/MM/yyyy'}}</td-->
+                    
+                    <td>
+                        <button mat-mini-fab aria-label="Example icon-button with a heart icon" (click)="submit(mou3inaordered.mou3ina)" type="submit" style="background-color: #3a0e57">
+                            <mat-icon>favorite</mat-icon>
+                          </button>
+                          &nbsp;
+                          <button mat-mini-fab aria-label="Example icon-button with a heart icon" (click)="submit1(mou3inaordered.mou3ina)" type="submit" style="background-color: #020910" >
+                            <mat-icon>favorite</mat-icon>
+                          </button>
+                       
+                    <!--button  *ngIf="complain.complainType == null" type="button" class="btn "  (click)="onAjouter(complain.id,complain,mymodalComplain)"><mat-icon>playlist_add</mat-icon></button>
+                    <button type="button" class="btn"  (click)="onSend(complain.customer.emailAdress)"><mat-icon>email</mat-icon></button>
+                  <button *ngIf="complain.complainType != null"  type="button" class="btn" ><mat-icon>done</mat-icon></button--></td>
+
+                  </tr>
+               
+             
+               
+            
+            </tbody>
+          </table>
+        </div>
+      </div>
+     
+      
+        
+           
+          
+          
+        
+    
+      
+    
+       
+  <!--form [formGroup]="customerForm"  >
+      
+         
+  
+       
+            
+         
+          
+           
+            <mat-card  width="350px" height="400px">
+  
+        <div class="form-group">        
+  <mat-form-field appearance="outline" >
+    <mat-label>{{ "firstName" | translate }}</mat-label>
+    <input   matInput formControlName="firstName" minlength="2" [(ngModel)]="customer.firstName" name="firstName"   required  >
+    <mat-error>First Name must be more than 2 characters .</mat-error>            
+  </mat-form-field> 
+        </div>
+        
+              <span class="col-xs-4 desc"class="input--style-2">&nbsp;&nbsp;&nbsp; ID</span>
+             <span class="text-right"> {{ customerOrderMou3inaLists[0].mou3ina.id}}</span>
+         <br>
+  
+        <button mat-raised-button color="primary" (click)="submit()" type="submit" >Favorite</button>
+        <button mat-raised-button color="primary" (click)="submit1()" type="submit" >Blacklist</button> 
+      
+    
+    
+    
+    
+    </mat-card>
+  
+  </form-->
+  
+  
+  
+  
+  

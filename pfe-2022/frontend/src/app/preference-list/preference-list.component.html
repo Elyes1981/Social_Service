@@ -1,0 +1,153 @@
+
+
+      
+
+            <div class="container">
+                
+                <div class="row page-title">
+                  <div class="col-md-10 col-md-offset-1">
+                    <div class="wizard-panel card">
+                      <div class="wizard-header">
+                        <h3 class="text-center">Build Your Profile</h3>
+                        <h5 class="text-center" style="margin-top: 5px; padding: 0 20px;">This information will let us know more about you.</h5>
+                      </div>
+                      <div class="wizard-navigation">
+                        <ul class="nav nav-pills">
+                          <li class="text-uppercase text-center">Favorite</li>
+                          <li class="text-uppercase text-center">Blacklist</li>
+                          
+                        </ul>
+                        <div class="move-tab text-center text-uppercase">Favorite</div>
+                      </div>
+                      <div class="wizard-body">
+                        <div class="wizard-tab">
+                            
+                          
+                                    <table class="table table-striped">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th style="color: black;">First Name</th>
+                                                <th style="color: black;"> Last Name</th>
+                                                
+                                                <th style="color: black;">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let preference of currentUser.mou3inas_preferences ">
+                                                <td>{{preference.firstName}}</td>
+            
+                                                <td>{{preference.lastName}}</td>
+                                                
+            
+            
+                                                <td>
+                                                    <button type="submit" class="btn"  (click)="deletefromPreference(preference)"
+                                                        style=" background-color: #2b0b5a;;"><span style="color:white"  type="submit">
+                                                            <mat-icon>delete</mat-icon>
+                                                        </span></button>
+            
+                                                    <!--button  *ngIf="complain.complainType == null" type="button" class="btn "  (click)="onAjouter(complain.id,complain,mymodalComplain)"><mat-icon>playlist_add</mat-icon></button>
+                                        <button type="button" class="btn"  (click)="onSend(complain.customer.emailAdress)"><mat-icon>email</mat-icon></button>
+                                      <button *ngIf="complain.complainType != null"  type="button" class="btn" ><mat-icon>done</mat-icon></button-->
+                                                </td>
+            
+                                            </tr>
+            
+            
+            
+            
+                                        </tbody>
+                                    </table>
+                                </div>
+                        
+                        <div class="wizard-tab">
+                            
+                         
+                                    <table class="table table-striped">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th style="color: black;">First Name</th>
+                                                <th style="color: black;"> Last Name</th>
+                                             
+                                                <th style="color: black;">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let blacklist of currentUser.mou3inas_blacklist">
+                                                <td>{{blacklist.firstName}}</td>
+    
+                                                <td>{{blacklist.lastName}}</td>
+                                                
+    
+    
+                                                <td>
+                                                    <button type="submit" class="btn btn-success" (click)="deletefromBlacklist(blacklist)"
+                                                        style=" background-color: #2b0b5a;;"><span style="color:white" >
+                                                            <mat-icon>delete</mat-icon>
+                                                        </span></button>
+    
+                                                    <!--button  *ngIf="complain.complainType == null" type="button" class="btn "  (click)="onAjouter(complain.id,complain,mymodalComplain)"><mat-icon>playlist_add</mat-icon></button>
+                              <button type="button" class="btn"  (click)="onSend(complain.customer.emailAdress)"><mat-icon>email</mat-icon></button>
+                            <button *ngIf="complain.complainType != null"  type="button" class="btn" ><mat-icon>done</mat-icon></button-->
+                                                </td>
+    
+                                            </tr>
+    
+    
+    
+    
+                                        </tbody>
+                                    </table>
+                                </div>
+                           
+                       
+                      </div>
+                      <div class="wizard-footer">
+
+                        <button mat-raised-button id="butadd" aria-label="Example icon button with a home icon" (click)="preOnClick()"  style="    margin-left: 20px;background-color:#2b0b5a;" >
+                            <span  style="color:white"translate>Previous</span></button>
+                  
+                            <button mat-raised-button id="butadd" aria-label="Example icon button with a home icon" (click)="nextOnClick()" style="    margin-left: 20px;background-color:#2b0b5a;" >
+                                <span  style="color:white"translate>Next</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="container" hidden>
+                <div class="row page-title">
+                  <div class="col-md-10 col-md-offset-1">
+                    <div class="wizard-panel card">
+                      <div class="wizard-header">
+                        <h3 class="text-center">Build Your Profile</h3>
+                        <h5 class="text-center" style="margin-top: 5px; padding: 0 20px;">This information will let us know more about you.</h5>
+                      </div>
+                      <div class="wizard-navigation">
+                        <ul class="nav nav-pills">
+                          <li class="text-uppercase text-center">About</li>
+                          <li class="text-uppercase text-center">Account</li>
+                          <li class="text-uppercase text-center">Address</li>
+                        </ul>
+                        <div class="move-tab text-center text-uppercase">About</div>
+                      </div>
+                      <div class="wizard-body">
+                        <div class="wizard-tab">
+                          tab 1
+                        </div>
+                        <div class="wizard-tab">
+                          tab 2
+                        </div>
+                        <div class="wizard-tab">
+                          tab 3
+                        </div>
+                      </div>
+                      <div class="wizard-footer">
+                        <button id="preBtn" class="btn btn-danger" (click)="preOnClick()">Previous</button>
+                        <button id="nextBtn" class="btn btn-success" (click)="nextOnClick()">Next</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="view-microservice" />
+        <module name="uss-microservices" />
+        <module name="customer-microservice" />
+        <module name="search-microservice" />
+        <module name="operation-microservice" />
+        <module name="payment-microservice" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="customer-microservice" options="-parameters" />
+      <module name="operation-microservice" options="-parameters" />
+      <module name="payment-microservice" options="-parameters" />
+      <module name="search-microservice" options="-parameters" />
+      <module name="view-microservice" options="-parameters" />
+    </option>
+  </component>
+</project>
