@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:multiselect_formfield/multiselect_formfield.dart';
+import 'package:providers_services/ui/SignUpViaCompany/ProviderCompanyRegistration.dart';
 import 'package:providers_services/ui/login/login.ui.dart';
 import 'package:providers_services/ui/signup/SignUp3.dart';
 import 'package:providers_services/ui/signup/signupController.dart';
@@ -87,7 +88,7 @@ class SignUp extends GetView<ServiceTypeController> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SignUp3(),
+                                  builder: (context) => ProviderCompanyRegistration()//SignUp3(),
                                 ),
                               );
                             },

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:providers_services/core/routes/app_routes.dart';
 import 'package:providers_services/core/services/generic.service.dart';

@@ -1,5 +1,3 @@
-
-
 import 'package:providers_services/core/models/StatusModel.dart';
 import 'package:providers_services/core/services/generic.service.dart';
 

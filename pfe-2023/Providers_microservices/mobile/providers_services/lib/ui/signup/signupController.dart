@@ -1,8 +1,9 @@
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_date_picker/flutter_date_picker.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:providers_services/core/models/GenderModel.dart';
 import 'package:providers_services/core/models/LangageModel.dart';
 import 'package:providers_services/core/models/Mou3inaModel.dart';
@@ -54,6 +55,7 @@ class ServiceTypeController extends GenericController{
     String? smartPhone ;
     String? vip ;
 
+    late TextEditingController CompanyID ;
     late TextEditingController firstName ;
     late TextEditingController dateinput ;
     late TextEditingController lastName;
@@ -64,16 +66,33 @@ class ServiceTypeController extends GenericController{
     late TextEditingController phone;
     late  TextEditingController phone2 ;
     late  TextEditingController comment ;
+    late TextEditingController morningCost ;
+    late TextEditingController eveningCost ;
+    late TextEditingController afternoonCost ;
     late  TextEditingController username ;
     late  TextEditingController password ;
     late  TextEditingController hasASmartPhone ;
     late  TextEditingController video ;
     late Mou3inaEntity mou3ina;
+    String? TokenDevice ;
     String? genderSelected ;
+/*    double? morningCost ;
+    double? afternoonCost ;
+    double? eveningCost ;*/
+
+    String? paymentFrequency;
+    double? totalCostPerDay;
+    bool showTotalCostMessage = false;
+    String? selectedPaymentFrequency;
+    double? cost1;
     double? x;
     double? y;
+    double? x2;
+    double? y2;
+    double? z2;
     String? statusSelected ;
-    String? senioritySelected ;
+  String? Company ;
+  String? senioritySelected ;
     String? cooptedSelected ;
     List<GenderModel> g=[];
     List<StatusModel> st=[];
@@ -103,6 +122,13 @@ class ServiceTypeController extends GenericController{
       phone = new TextEditingController();
       phone2 = new TextEditingController();
       documentIdType = new TextEditingController();
+      morningCost = new TextEditingController();
+      afternoonCost = new TextEditingController();
+      eveningCost = new TextEditingController();
+      CompanyID = new  TextEditingController() ;
+
+
+
 
       super.onInit();
     }
@@ -162,6 +188,14 @@ class ServiceTypeController extends GenericController{
       hasASmartPhone  = new  TextEditingController  ();
       video  = new  TextEditingController()  ;
       dateinput  = new  TextEditingController()  ;
+     /* morningCost = 0.0;
+      afternoonCost = 0.0;
+      eveningCost= 0.0;*/
+      morningCost = new TextEditingController();
+      afternoonCost = new TextEditingController();
+      eveningCost = new TextEditingController();
+      CompanyID = new TextEditingController();
+
 
 
 
@@ -255,7 +289,7 @@ class ServiceTypeController extends GenericController{
       },
       {
         'value': st[1].id,
-        'label':Get.locale!.languageCode=='ar'? st[1].label_ar:Get.locale!.languageCode=='fr'?st[2].label_fr:Get.locale!.languageCode=='en'? st[2].label:'en',
+        'label':Get.locale!.languageCode=='ar'? st[1].label_ar:Get.locale!.languageCode=='fr'?st[1].label_fr:Get.locale!.languageCode=='en'? st[1].label:'en',
         'textStyle': TextStyle(color: Colors.black),
       },
       {
@@ -274,7 +308,7 @@ class ServiceTypeController extends GenericController{
     Future<void> createMou3ina() async {
       try {
 
-        final Mou3inaEntity response = await mou3inaService.create(mou3ina!);
+        final Mou3inaEntity response = await mou3inaService.create(mou3ina!, CompanyID.text);
 
         Get.offAndToNamed(AppRoutes.login);
 
@@ -284,6 +318,23 @@ class ServiceTypeController extends GenericController{
 
       }
     }
+  /*Future<void> createProviderCompany() async {
+    try {
+      print(CompanyID.text);// Obtenir la valeur du champ 'CompanyID'
+      final Mou3inaEntity response = await mou3inaService.create(mou3ina!, CompanyID.text);
+      initialization();
+
+      Get.offAndToNamed(AppRoutes.login);
+
+    } catch (e) {
+      print(e);
+
+    }
+  }
+*/
+
+
+
   
     addMou3ina(bool isValid) async {
       if (isValid) {
@@ -297,6 +348,7 @@ class ServiceTypeController extends GenericController{
         mou3ina.phone2 = phone2.text ;
         mou3ina.documentIdType = documentIdType.text ;
         mou3ina.comment = comment.text ;
+        mou3ina.TokenDevice = TokenDevice;
         mou3ina.vip = vip ;
         mou3ina.username = username.text ;
         mou3ina.password =password.text ;
@@ -305,6 +357,10 @@ class ServiceTypeController extends GenericController{
         mou3ina.birthday=dateinput.text;
         mou3ina.home_Adress_GPS_latt=x;
         mou3ina.home_Adress_GPS_long=y;
+        mou3ina.morningCost = double.parse(morningCost.text);
+        mou3ina.afternoonCost = double.parse(afternoonCost.text);
+        mou3ina.eveningCost = double.parse(eveningCost.text);
+
         print("heloo");
         print(g);
         GenderModel genre = g.firstWhere((element) => element.id.toString() == genderSelected);
@@ -340,6 +396,19 @@ class ServiceTypeController extends GenericController{
         }
       
     }
+
+    // Method to save the selected payment frequency
+    void savePaymentFrequency(String value) {
+      selectedPaymentFrequency = value;
+      print(value);
+      print(selectedPaymentFrequency);
+
+      // Perform any additional saving logic here
+    }
+
+
+
+
   
  
 

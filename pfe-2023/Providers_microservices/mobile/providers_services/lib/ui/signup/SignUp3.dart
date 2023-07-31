@@ -436,7 +436,76 @@ class SignUp3 extends GetView<ServiceTypeController> {
                                         print("Date is not selected");
                                       }
                                     },
-                                  )
+                                  ),
+                                  /*DropdownButtonFormField<String>(
+
+                      decoration: InputDecoration(
+                        labelText: 'Payment frequency',
+                      ),
+                      value: controller.selectedPaymentFrequency,
+                      items: [
+
+                      DropdownMenuItem<String>(
+
+                        value: 'daily',
+                        child: Text('Daily'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: 'weekly',
+                        child: Text('Weekly'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: 'both',
+                        child: Text('Both'),
+                      ),
+                     ],
+                      validator: (value) {
+
+                        if (value == null || value.isEmpty) {
+                          return 'This field is required';
+                        }
+
+                        print(value);
+                      },
+
+                      onChanged: (value) {
+                        controller.selectedPaymentFrequency = value ;
+                      },
+
+                      onSaved: (value) {
+                        controller.savePaymentFrequency(value!);
+                        print(value);
+                      },
+
+                    ),
+
+                          if (controller.selectedPaymentFrequency == 'daily' || controller.selectedPaymentFrequency == 'both')*/
+                                  TextField(
+                              controller: controller.morningCost, // Contrôleur d'édition de ce TextField
+                              keyboardType: TextInputType.number, // Type de clavier pour la saisie numérique
+                              decoration: InputDecoration(
+                                icon: Icon(Icons.monetization_on), // Icône du champ texte
+                                labelText: "Morning Cost".tr, // Texte de l'étiquette du champ
+                              ),
+                            ),
+                          //if (controller.paymentFrequency == 'daily' || controller.paymentFrequency == 'both')
+                            TextField(
+                              controller: controller.afternoonCost, // Contrôleur d'édition de ce TextField
+                              keyboardType: TextInputType.number, // Type de clavier pour la saisie numérique
+                              decoration: InputDecoration(
+                                icon: Icon(Icons.monetization_on), // Icône du champ texte
+                                labelText: "Afternoon Cost".tr, // Texte de l'étiquette du champ
+                              ),
+                            ),
+                         // if (controller.paymentFrequency == 'daily' || controller.paymentFrequency == 'both')
+                            TextField(
+                              controller: controller.eveningCost, // Contrôleur d'édition de ce TextField
+                              keyboardType: TextInputType.number, // Type de clavier pour la saisie numérique
+                              decoration: InputDecoration(
+                                icon: Icon(Icons.monetization_on), // Icône du champ texte
+                                labelText: "Evening Cost".tr, // Texte de l'étiquette du champ
+                              ),
+                            ),
                                 ],
                               ),
                             )

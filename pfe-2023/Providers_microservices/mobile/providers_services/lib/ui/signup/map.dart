@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import "package:latlong/latlong.dart" as latLng;
+import 'package:providers_services/ui/SignUpViaCompany/ProviderCompanyRegistration.dart';
 import 'package:providers_services/ui/signup/SignUp3.dart';
 import 'package:providers_services/ui/signup/signupController.dart';
 class localisatioMap extends GetView<ServiceTypeController> {
@@ -163,7 +164,83 @@ Widget build(BuildContext context) {
             height: 10,
           )
           ,
-          FloatingActionButton(
+
+              FloatingActionButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      String? selectedAccountType; // Modifier pour utiliser un type nullable
+
+                      return StatefulBuilder(
+                        builder: (context, setState) {
+                          return AlertDialog(
+                            title: Text(
+                              'Select the type of your account'.tr,
+                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ListTile(
+                                  title: Text('Provider'),
+                                  leading: Radio(
+                                    value: 'provider',
+                                    groupValue: selectedAccountType,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectedAccountType = value as String?;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                ListTile(
+                                  title: Text('Cleaning company services'),
+                                  leading: Radio(
+                                    value: 'company',
+                                    groupValue: selectedAccountType,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectedAccountType = value as String?;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text('Cancel'.tr),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  if (selectedAccountType == 'provider') {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => SignUp3(),
+                                    );
+                                  } else if (selectedAccountType == 'company') {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => ProviderCompanyRegistration(),
+                                    );
+                                  }
+                                },
+                                child: Text('Confirm'.tr),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+                child: const Icon(Icons.arrow_forward),
+              ),
+          /*FloatingActionButton(
             onPressed: (){   Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -171,7 +248,7 @@ Widget build(BuildContext context) {
                   ),
                 );},
            child: const Icon(Icons.arrow_forward),
-          )
+          )*/
         
             
         

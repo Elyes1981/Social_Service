@@ -25,6 +25,7 @@ class LoginController extends GenericController {
     'hunter@gmail.com': 'hunter',
   };
 
+  ValueNotifier<String> selectedAccountType = ValueNotifier<String>("");
   /*late*/ Mou3inaEntity? mou3ina;
   String? passwordd;
   String? usernamee;
@@ -73,6 +74,20 @@ class LoginController extends GenericController {
   void onSubmit(bool isFormValid) async {
     final response =
         _service.login(usernameController.text, passwordController.text);
+    print(usernameController.text);
+    print("testlogin");
+  }
+
+/*  void _updateSelectedAccountType(String value) {
+    controller.selectedAccountType.value = value;
+  }*/
+
+  void updateSelectedAccountType(String value) {
+    selectedAccountType.value = value;
+  }
+
+  void confirmAction() {
+    print('Type de compte sélectionné : ${selectedAccountType.value}');
   }
 
   @override

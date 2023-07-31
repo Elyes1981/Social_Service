@@ -5,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:providers_services/ui/SignUpViaCompany/ProviderCompanyRegistration.dart';
 import 'package:providers_services/ui/home/home.ui.dart';
 import 'package:providers_services/ui/login/login.controller.dart';
 import 'package:providers_services/ui/signup/map.dart';
+
 
 class LoginView extends GetView<LoginController> {
   LoginView({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class LoginView extends GetView<LoginController> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   String? mail;
+
   Future<UserCredential?> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser;
@@ -27,6 +30,12 @@ class LoginView extends GetView<LoginController> {
     );
 
     mail = googleUser?.email;
+
+    //controller.selectedAccountType.value = "some value";
+
+    void _updateSelectedAccountType(String value) {
+      controller.selectedAccountType.value = value;
+    }
 
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
@@ -112,7 +121,20 @@ class LoginView extends GetView<LoginController> {
                                 borderSide: BorderSide(color: Colors.red))),
                       ),
                     ),
-                    Padding(
+                    ElevatedButton(
+                      child: Text("14".tr),
+                      onPressed: () {
+                        controller
+                            .onSubmit(_formKeyy.currentState!.validate());
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeView(),
+                          ),
+                        );
+                      },
+                    )
+/*                    Padding(
                       padding: EdgeInsets.all(16),
                       child: Container(
                         height: 50,
@@ -160,12 +182,12 @@ class LoginView extends GetView<LoginController> {
                           // )
                         ),
                       ),
-                    ),
+                    )*/,
                     Padding(
                       padding: EdgeInsets.all(16),
                       child: Container(
                         height: 50,
-                        width: 400,
+                        width: 300,
                         child: TextButton(
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.white,
@@ -201,7 +223,7 @@ class LoginView extends GetView<LoginController> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                 builder: (context) => HomeView(),
+                                 builder: (context) => ProviderCompanyRegistration(),//HomeView(),
                               ),
                             );
                           },
@@ -222,22 +244,24 @@ class LoginView extends GetView<LoginController> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold),
                             ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => localisatioMap(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                "19".tr,
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                      InkWell(
+                        onTap: () {
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => localisatioMap(),
                             ),
+                          );
+                        },
+
+                        child: Text(
+                          "19".tr,
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                           ],
                         ))
                   ],
